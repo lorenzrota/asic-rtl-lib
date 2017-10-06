@@ -1,4 +1,4 @@
-This is a script to simulate and test 12b14b encoder using Synopsys VCS.
+This is a script to simulate and test 12b14b encoder rtl using Synopsys VCS.
 
 Simply execute ```./run.sh``` followed by either:
 ```shell
