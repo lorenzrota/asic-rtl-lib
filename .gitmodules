@@ -1,0 +1,3 @@
+[submodule "12b14benc/src/verilog-lfsr"]
+	path = 12b14benc/src/verilog-lfsr
+	url = git@github.com:alexforencich/verilog-lfsr.git
