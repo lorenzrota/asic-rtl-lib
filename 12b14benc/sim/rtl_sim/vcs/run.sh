@@ -14,24 +14,26 @@ mkdir -p wlib
 
 # compiler arguments
 set cargs='-nc' # common arguments
+set src=../../../src/ssp12b14benc
+set vsrc=../../../src/verilog-lfsr/rtl
 
 # compile vhd files
-vhdlan $cargs ../src/ssp12b14benc/StdRtlPkg.vhd
-vhdlan $cargs ../src/ssp12b14benc/Code12b14bPkg.vhd
-vhdlan $cargs ../src/ssp12b14benc/Encoder12b14b.vhd
-vhdlan $cargs ../src/ssp12b14benc/SspFramer.vhd
-vhdlan $cargs ../src/ssp12b14benc/SspDeframer.vhd
-vhdlan $cargs ../src/ssp12b14benc/Decoder12b14b.vhd
-vhdlan $cargs ../src/ssp12b14benc/SspDecoder12b14b.vhd
-vhdlan $cargs ../src/ssp12b14benc/SspEncoder12b14b.vhd
-vhdlan $cargs ../src/ssp12b14benc/syncbus.vhd
+vhdlan $cargs $src/StdRtlPkg.vhd
+vhdlan $cargs $src/Code12b14bPkg.vhd
+vhdlan $cargs $src/Encoder12b14b.vhd
+vhdlan $cargs $src/SspFramer.vhd
+vhdlan $cargs $src/SspDeframer.vhd
+vhdlan $cargs $src/Decoder12b14b.vhd
+vhdlan $cargs $src/SspDecoder12b14b.vhd
+vhdlan $cargs $src/SspEncoder12b14b.vhd
+vhdlan $cargs $src/syncbus.vhd
 
 # compile verilog files
-vlogan $cargs ../src/verilog-lfsr/rtl/lfsr.v
-vlogan $cargs ../src/verilog-lfsr/rtl/lfsr_prbs_gen.v
+vlogan $cargs $vsrc/lfsr.v
+vlogan $cargs $vsrc/lfsr_prbs_gen.v
 
 # This is the top
-vhdlan $cargs ../src/ssp12b14benc/ssp12b14b_tb.vhd
+vhdlan $cargs $src/ssp12b14b_tb.vhd
 
 # run the testbench
 vcs $cargs ssp12b14b_tb -debug_all
