@@ -21,13 +21,14 @@ set src_dir ../../src/ssp12b14benc
 set vhdl_infiles {$src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/SspEncoder12b14b.vhd}
 read_vhdl $vhdl_infiles
 current_design SspEncoder12b14b
-# analyze -format vhdl $vhdl_infiles
+#elaborate SspEncoder12b14b
 
-elaborate SspEncoder12b14b
-check_design
 create_clock -period 10 -name design_clk clk
-# uniquify
 link
+uniquify
+
+check_timing
+check_design
 
 # set power domain
 create_power_domain PD
@@ -45,6 +46,7 @@ set_wire_load_model -library tcb013ghpwc -name "TSMC8K_Fsg_Conservative"
 compile_ultra
 write -format verilog -hierarchy -output enc.v
 write -format ddc -hierarchy -output enc.ddc
+write_sdf enc.sdf
 write_sdc enc.sdc
 report_area -nosplit -hierarchy > area.rpt
 report_timing -nosplit -transition_time -nets -attributes > timing.rpt
