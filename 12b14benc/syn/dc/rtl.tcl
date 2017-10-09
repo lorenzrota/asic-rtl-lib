@@ -11,6 +11,8 @@ set target_library "tcb013ghpwc.db"
 set link_library "* tcb013ghpwc.db"
 lappend search_path $pdk_dir/Front_End/physical_compiler/tcb013ghp_211a/
 set physical_library {tcb013ghp_Fsg_8lm_6x6.pdb}
+lappend search_path $pdk_dir/Front_End/timing_power_noise/tcb013ghp_211a/
+set symbol_library "tcb013ghp.sdb"
 
 # custom voltages
 set upf_create_implicit_supply_sets false
