@@ -75,16 +75,16 @@ architecture arch of ssp12b14b_tb is
 
     -- syncbus is used to delay output
     component syncbus is
- 	generic(
- 		g_stages : positive := 7;
- 		g_width  : positive := 12
- 	);
- 	port(
- 		clk_i   : in  std_logic;
- 		reset_i : in  std_logic;
- 		async_i : in  std_logic_vector(g_width - 1 downto 0);
- 		syncd_o : out std_logic_vector(g_width - 1 downto 0)
- 	);
+     generic(
+         g_stages : positive := 7;
+         g_width  : positive := 12
+     );
+     port(
+         clk_i   : in  std_logic;
+         reset_i : in  std_logic;
+         async_i : in  std_logic_vector(g_width - 1 downto 0);
+         syncd_o : out std_logic_vector(g_width - 1 downto 0)
+     );
     end component;
 
     -- SSP 12b14b Enconder
@@ -146,7 +146,7 @@ begin
     usync : syncbus
     generic map(
         g_stages => 7,
- 		g_width  => 12)
+        g_width  => 12)
     port map(
         clk_i   => s_clk,
         reset_i => s_rst,
@@ -195,9 +195,9 @@ begin
     p_clk_gen : process is
     begin
             s_clk <= '0';
-    		wait for clk_period / 2;
-    		s_clk <= '1';
-    	    wait for clk_period / 2;
+            wait for clk_period / 2;
+            s_clk <= '1';
+            wait for clk_period / 2;
     end process p_clk_gen;
 
     -- generate reset for testbench
@@ -221,13 +221,13 @@ begin
 
         for j in 0 to c_num_tests loop
             wait until s_clk = '1';
-			s_enc_valid  <= '1';
+            s_enc_valid  <= '1';
             s_enc_data_i <= s_prbs_dout;
         end loop;
        s_enc_valid <= '0';
-	   wait until s_dec_valid = '0';
+       wait until s_dec_valid = '0';
 
-	   report "Simulation finished successfully" severity failure;
+       report "Simulation finished successfully" severity failure;
     end process p_data_gen;
 
     -- verify prbs31 data from encoder
