@@ -23,7 +23,6 @@ use work.Code12b14bPkg.all;
 entity Encoder12b14b is
 
    generic (
-      TPD_G          : time    := 1 ns;
       RST_POLARITY_G : sl      := '0';
       RST_ASYNC_G    : boolean := false;
       DEBUG_DISP_G   : boolean := false;
@@ -112,10 +111,10 @@ begin
    seq : process (clk, rst) is
    begin
       if (RST_ASYNC_G and rst = RST_POLARITY_G) then
-         r <= REG_INIT_C after TPD_G;
+         r <= REG_INIT_C;
       elsif (rising_edge(clk)) then
          if clkEn = '1' then
-            r <= rin after TPD_G;
+            r <= rin;
          end if;
       end if;
    end process seq;
