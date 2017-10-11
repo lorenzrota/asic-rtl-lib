@@ -23,7 +23,7 @@ read_vhdl $vhdl_infiles
 current_design SspEncoder12b14b
 #elaborate SspEncoder12b14b
 
-create_clock -period 10 -name design_clk clk
+create_clock -period 10 -name design_clk clk_i
 link
 uniquify
 
@@ -43,6 +43,7 @@ set_operating_conditions WCCOM
 set_max_fanout 100 SspEncoder12b14b
 # set_wire_load_model -library tcb013ghplt -name "TSMC8K_Fsg_Conservative"
 set_wire_load_model -library tcb013ghpwc -name "TSMC8K_Fsg_Conservative"
+# compile 
 compile_ultra
 write -format verilog -hierarchy -output enc.v
 write -format ddc -hierarchy -output enc.ddc
