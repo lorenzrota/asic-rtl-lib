@@ -27,7 +27,6 @@ use work.StdRtlPkg.all;
 entity SspFramer is
 
    generic (
-      TPD_G           : time    := 1 ns;
       RST_POLARITY_G  : sl      := '0';
       RST_ASYNC_G     : boolean := true;
       AUTO_FRAME_G    : boolean := true;
@@ -153,9 +152,9 @@ begin
    seq : process (clk, rst) is
    begin
       if (RST_ASYNC_G = true and rst = RST_POLARITY_G) then
-         r <= REG_INIT_C after TPD_G;
+         r <= REG_INIT_C;
       elsif (rising_edge(clk)) then
-         r <= rin after TPD_G;
+         r <= rin;
       end if;
    end process seq;
 
