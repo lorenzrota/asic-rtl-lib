@@ -27,18 +27,16 @@ use work.Code12b14bPkg.all;
 
 entity SspEncoder12b14b is
     generic(
-        RST_POLARITY_G : sl      := '1';
+        RST_POLARITY_G : sl      := '0'; -- active-low reset
         RST_ASYNC_G    : boolean := true;
         AUTO_FRAME_G   : boolean := true;
         FLOW_CTRL_EN_G : boolean := false);
     port(
         clk_i   : in  std_logic;
-        rst_i   : in  std_logic := RST_POLARITY_G;
+        rst_n_i : in  std_logic := RST_POLARITY_G; -- active-low reset
         valid_i : in  std_logic;
         data_i  : in  std_logic_vector(11 downto 0);
-
-        valid_o : out std_logic;
-        ready_o : out std_logic;
+        
         data_o  : out std_logic_vector(13 downto 0)
     );
 end entity SspEncoder12b14b;
@@ -68,12 +66,14 @@ begin
             SSP_EOF_K_G     => "1")
         port map(
             clk      => clk_i,
-            rst      => rst_i,
+            rst      => rst_n_i,
             validIn  => valid_i,
-            readyIn  => ready_o,
+            readyIn  => open,
             dataIn   => data_i,
+            sof      => '0',
+            eof      => '0',
             validOut => s_valid,
-            readyOut => s_ready,
+            readyOut => s_ready,        -- input
             dataOut  => s_frame,
             dataKOut => s_framek
         );
@@ -85,13 +85,16 @@ begin
             FLOW_CTRL_EN_G => FLOW_CTRL_EN_G)
         port map(
             clk      => clk_i,
-            rst      => rst_i,
+            clkEn    => '1',
+            rst      => rst_n_i,
             validIn  => s_valid,
-            readyIn  => s_ready,
+            readyIn  => s_ready,        -- output, always 1?
             dataIn   => s_frame,
+            dispIn   => "00",
             dataKIn  => s_framek(0),
-            validOut => valid_o,
-            dataOut  => data_o
+            validOut => open,
+            readyOut => '1',
+            dataOut  => data_o,
+            dispOut  => open
         );
-
 end architecture rtl;
