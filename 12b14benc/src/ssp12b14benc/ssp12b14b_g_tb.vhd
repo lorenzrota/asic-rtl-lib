@@ -29,21 +29,16 @@ architecture arch of ssp12b14b_g_tb is
     constant clk_period : time := 10 ns;
 
     -- constants to interface with SLAC's modules
-    constant c_tpd          : time      := 1 ns; -- SLAC's timing
-    constant c_rst_polarity : std_logic := '1'; -- active high
-    constant c_rst_async    : boolean   := true; -- synchronize reset
-    constant c_num_tests    : positive  := 2**20; -- Number of PRBS to generate
+    constant c_tpd       : time     := 1 ns; -- SLAC's timing
+    constant c_rst_async : boolean  := true; -- synchronize reset
+    constant c_num_tests : positive := 2**20; -- Number of PRBS to generate
 
     -- signals
-    signal s_clk : std_logic;
-    signal s_rst : std_logic;
+    signal s_clk   : std_logic;
+    signal s_rst   : std_logic;
+    signal s_rst_n : std_logic;
 
     signal s_enc_valid_i : std_logic := '0';
-    signal s_enc_valid_o : std_logic := '0';
-
-    signal s_enc_ready : std_logic := '0';
-    signal s_enc_sof   : std_logic := '0';
-    signal s_enc_eof   : std_logic := '0';
 
     signal s_enc_data_i : std_logic_vector(11 downto 0) := (others => '0');
     signal s_enc_data_o : std_logic_vector(13 downto 0) := (others => '0');
@@ -94,11 +89,10 @@ architecture arch of ssp12b14b_g_tb is
     component SspEncoder12b14b is
         port(
             clk_i   : in  std_logic;
-            rst_i   : in  std_logic;
+            rst_n_i : in  std_logic;
             valid_i : in  std_logic;
             data_i  : in  std_logic_vector(11 downto 0);
-            valid_o : out std_logic;
-            ready_o : out std_logic;
+            
             data_o  : out std_logic_vector(13 downto 0)
         );
     end component;
@@ -154,23 +148,21 @@ begin
     U_SspEncoder12b14b : SspEncoder12b14b
         port map(
             clk_i   => s_clk,
-            rst_i   => s_rst,
+            rst_n_i => s_rst_n,
             valid_i => s_enc_valid_i,
             data_i  => s_enc_data_i,
-            valid_o => s_enc_valid_o,
-            ready_o => s_enc_ready,
             data_o  => s_enc_data_o
         );
 
-    s_dec_data_i <= s_enc_data_o when s_enc_valid_o = '1' else (others => '0');
+    s_dec_data_i <= s_enc_data_o;
     U_SspDecoder12b14b_1 : SspDecoder12b14b
         generic map(
             TPD_G          => c_tpd,
-            RST_POLARITY_G => c_rst_polarity,
+            RST_POLARITY_G => '0',      -- active-low reset
             RST_ASYNC_G    => c_rst_async)
         port map(
             clk       => s_clk,
-            rst       => s_rst,
+            rst       => s_rst_n,
             validIn   => '1',
             dataIn    => s_dec_data_i,
             dataOut   => s_dec_data_o,
@@ -193,10 +185,12 @@ begin
     -- generate reset for testbench
     p_rst_gen : process is
     begin
-        s_rst <= '1';
+        s_rst   <= '1';
+        s_rst_n <= '0';
         wait for 30 * clk_period;       -- hold rest for 30 clock periods
         wait until s_clk = '1';
-        s_rst <= '0';
+        s_rst   <= '0';
+        s_rst_n <= '1';
         wait;
     end process p_rst_gen;
 
@@ -211,10 +205,8 @@ begin
 
         for j in 0 to c_num_tests loop
             wait until s_clk = '1';
-            if s_enc_ready = '1' then
-                s_enc_valid_i <= '1';
-                s_enc_data_i  <= s_prbs_dout;
-            end if;
+            s_enc_valid_i <= '1';
+            s_enc_data_i  <= s_prbs_dout;
         end loop;
         s_enc_valid_i <= '0';
         wait until s_dec_valid = '0';
