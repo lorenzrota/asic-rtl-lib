@@ -15,7 +15,8 @@ lappend search_path $pdk_dir/Front_End/timing_power_noise/tcb013ghp_211a/
 set symbol_library "tcb013ghp.sdb"
 
 # custom voltages
-set upf_create_implicit_supply_sets false
+# set upf_create_implicit_supply_sets false
+set_svf enc.svf
 
 set src_dir ../../src/ssp12b14benc
 set vhdl_infiles {$src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/SspEncoder12b14b.vhd}
@@ -31,12 +32,12 @@ check_timing
 check_design
 
 # set power domain
-create_power_domain PD
-create_supply_net vdd -domain PD
-create_supply_net gnd -domain PD
-set_domain_supply_net -primary_power_net vdd -primary_ground_net gnd PD
-set_voltage 1.08 -object_list vdd
-set_voltage 0 -object_list gnd
+# create_power_domain PD
+# create_supply_net vdd -domain PD
+# create_supply_net gnd -domain PD
+# set_domain_supply_net -primary_power_net vdd -primary_ground_net gnd PD
+# set_voltage 1.08 -object_list vdd
+# set_voltage 0 -object_list gnd
 
 # set_operating_conditions LTCOM
 set_operating_conditions WCCOM
@@ -45,6 +46,7 @@ set_max_fanout 100 SspEncoder12b14b
 set_wire_load_model -library tcb013ghpwc -name "TSMC8K_Fsg_Conservative"
 # compile 
 compile_ultra
+set_svf -off
 write -format verilog -hierarchy -output enc.v
 write -format ddc -hierarchy -output enc.ddc
 write_sdf enc.sdf
