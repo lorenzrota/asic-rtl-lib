@@ -25,7 +25,7 @@ logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=mylogl
 
 # openfiles
 try:
-    val, clk = np.loadtxt(sfile, dtype=np.bool, delimiter=' ', usecols=(1, 2), unpack=True)
+    val, clk = np.loadtxt(sfile, dtype=np.bool, skiprows=3, delimiter=' ', usecols=(2, 3), unpack=True)
 except IOError as e:
     logging.error("[%s] cannot be opened!", sfile)
     logging.error(e)
