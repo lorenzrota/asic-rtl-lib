@@ -4,7 +4,7 @@ The file in.txt should be prepared and cleaned by parsewave.py then
 
 Simply execute ```./run.sh``` followed by either:
 
-```vcs ssp12b14b_tb -debug_all -R -gui ```
+```vcs decodefile -debug_all -R -gui ```
 
 or
 
