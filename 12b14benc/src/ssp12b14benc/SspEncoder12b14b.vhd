@@ -43,8 +43,8 @@ end entity SspEncoder12b14b;
 
 architecture rtl of SspEncoder12b14b is
 
-    signal s_frame  : std_logic_vector(11 downto 0) := (others => '0');
-    signal s_framek : std_logic_vector(0 downto 0)  := (others => '0');
+    signal s_frame  : std_logic_vector(11 downto 0); -- := (others => '0');
+    signal s_framek : std_logic_vector(0 downto 0); --  := (others => '0');
     signal s_valid  : std_logic;
     signal s_ready  : std_logic;
 
