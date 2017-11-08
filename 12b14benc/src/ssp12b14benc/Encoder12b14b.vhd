@@ -60,12 +60,12 @@ architecture rtl of Encoder12b14b is
       dataOut  => (others => '0'));
 --      invalidK => '0');
 
-   signal r   : RegType := REG_INIT_C;
+   signal r   : RegType; -- := REG_INIT_C;
    signal rin : RegType;
 
 begin
 
-   comb : process (dataIn, dataKIn, dispIn, r, rst) is
+   comb : process (dataIn, dataKIn, dispIn, r, rst, readyOut) is
       variable v         : RegType;
       variable dispInTmp : slv(1 downto 0);
       variable invalidK  : sl;
