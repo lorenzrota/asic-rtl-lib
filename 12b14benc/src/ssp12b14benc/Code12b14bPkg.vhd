@@ -81,7 +81,8 @@ package Code12b14bPkg is
    -------------------------------------------------------------------------------------------------
    -- Disparity types and helper functions
    -------------------------------------------------------------------------------------------------
-   subtype BlockDisparityType is integer range -4 to 4;
+   -- subtype BlockDisparityType is integer range -4 to 4;
+   subtype BlockDisparityType is integer;
    function toSlv (d                : BlockDisparityType) return slv;
    function toBlockDisparityType (d : slv(1 downto 0)) return BlockDisparityType;
    function getDisparity (vec       : slv) return BlockDisparityType;
@@ -442,7 +443,8 @@ package body Code12b14bPkg is
       variable blockDisp56 : BlockDisparityType;
 
       variable debug   : boolean := false;
-      variable tmpDisp : integer range -8 to 8;
+      --variable tmpDisp : integer range -8 to 8;
+	  variable tmpDisp : integer;
       variable compliment : sl;
    begin
 
