@@ -42,14 +42,14 @@ entity SspFramer is
 
    port (
       clk      : in  sl;
-      rst      : in  sl := RST_POLARITY_G;
+      rst      : in  sl;
       validIn  : in  sl;
       readyIn  : out sl;
       dataIn   : in  slv(WORD_SIZE_G-1 downto 0);
-      sof      : in  sl := '0';
-      eof      : in  sl := '0';
+      sof      : in  sl;
+      eof      : in  sl;
       validOut : out sl;
-      readyOut : in  sl := '1';
+      readyOut : in  sl;
       dataOut  : out slv(WORD_SIZE_G-1 downto 0);
       dataKOut : out slv(K_SIZE_G-1 downto 0));
 
@@ -83,7 +83,7 @@ architecture rtl of SspFramer is
       dataKOut    => (others => '0'),
       dataOut     => (others => '0'));
 
-   signal r   : RegType := REG_INIT_C;
+   signal r   : RegType; -- := REG_INIT_C;
    signal rin : RegType;
 
 begin
