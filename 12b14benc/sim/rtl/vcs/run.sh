@@ -37,6 +37,7 @@ vhdlan $cargs $src/ssp12b14b_tb.vhd
 
 # run the testbench
 vcs $cargs ssp12b14b_tb -debug_all
+# vcs ssp12b14b_tb -debug_all -R +vcs+vcdpluson -debug_pp
 
 echo "\n\n### You can run\nvcs ssp12b14b_tb -debug_all -R -gui"
 echo "\nor ./simv"
