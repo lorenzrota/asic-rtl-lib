@@ -1,4 +1,4 @@
-This is a script to simulated spice output streamed to a file using Synopsys VCS.
+This is a script to simulate spice output streams to a file using Synopsys VCS.
 
 The file in.txt should be prepared and cleaned by parsewave.py then
 
