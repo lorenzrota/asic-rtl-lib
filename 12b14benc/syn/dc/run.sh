@@ -8,4 +8,4 @@ source /afs/slac/g/reseng/synopsys/syn/M-2016.12-SP5-1/settings.csh
 setenv TSMC130_DIR /u1/abunimeh/pdk/TSMCHOME/digital
 
 # dc flow is in rtl.tcl
-dc_shell-xg-t -f rtl.tcl
+dc_shell-xg-t -64bit -topographical_mode -f rtl.tcl
