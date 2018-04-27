@@ -15,8 +15,17 @@ import logging
 import numpy as np
 import sys
 
+
 sfile = 'test.txt'  # input file from hspice
 ofile = 'in.txt'  # output file for stimulating vhdl testbench
+
+# take script args as filenames
+if len(sys.argv) > 1:
+    sfile = sys.argv[1]
+    ofile = sfile + '.new'
+if len(sys.argv) == 3:
+    ofile = sys.argv[2]
+
 # myloglevel = logging.DEBUG
 myloglevel = logging.INFO
 
@@ -57,7 +66,7 @@ out[:, 0] = val_stable
 out[:, 1] = clk_stable
 
 try:
-    np.savetxt('in.txt', out, delimiter=' ', fmt='%u')
+    np.savetxt(ofile, out, delimiter=' ', fmt='%u')
 except IOError as e:
     logging.error("[%s] cannot be opened!", sfile+'.new')
     logging.error(e)
