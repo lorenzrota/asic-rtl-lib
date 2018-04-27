@@ -19,8 +19,8 @@
 
 library ieee;
 use ieee.std_logic_1164.all;
-use IEEE.STD_LOGIC_UNSIGNED.all;
-use IEEE.STD_LOGIC_ARITH.all;
+-- use IEEE.STD_LOGIC_UNSIGNED.all;
+-- use IEEE.STD_LOGIC_ARITH.all;
 
 use work.StdRtlPkg.all;
 use work.Code12b14bPkg.all;
@@ -36,7 +36,7 @@ entity SspEncoder12b14b is
         rst_n_i : in  std_logic := RST_POLARITY_G; -- active-low reset
         valid_i : in  std_logic;
         data_i  : in  std_logic_vector(11 downto 0);
-        
+
         data_o  : out std_logic_vector(13 downto 0)
     );
 end entity SspEncoder12b14b;
