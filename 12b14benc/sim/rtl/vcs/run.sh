@@ -4,7 +4,7 @@
 # Faisal T. Abu-Nimeh 20171005
 
 # load vcs env variables
-source /afs/slac/g/reseng/synopsys/vcs-mx/M-2017.03-SP2/settings.csh
+source /afs/slac/g/reseng/synopsys/vcs-mx/N-2017.12-1/settings.csh
 
 # clean up some files
 rm -rf wlib simv* csrc DVEfiles inter.vpd ucli.key .vlogansetup.args
@@ -13,7 +13,7 @@ rm -rf .vlogansetup.env
 mkdir -p wlib
 
 # compiler arguments
-set cargs='-nc' # common arguments
+set cargs='-full64 -nc' # common arguments
 set src=../../../src/ssp12b14benc
 set vsrc=../../../src/verilog-lfsr/rtl
 
@@ -39,5 +39,5 @@ vhdlan $cargs $src/ssp12b14b_tb.vhd
 vcs $cargs ssp12b14b_tb -debug_all
 # vcs ssp12b14b_tb -debug_all -R +vcs+vcdpluson -debug_pp
 
-echo "\n\n### You can run\nvcs ssp12b14b_tb -debug_all -R -gui"
+echo "\n\n### You can run\nvcs ssp12b14b_tb -full64 -debug_all -R -gui"
 echo "\nor ./simv"
