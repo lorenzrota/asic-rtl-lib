@@ -26,15 +26,17 @@ if len(sys.argv) > 1:
 if len(sys.argv) == 3:
     ofile = sys.argv[2]
 
-# myloglevel = logging.DEBUG
-myloglevel = logging.INFO
+myloglevel = logging.DEBUG
+# myloglevel = logging.INFO
 
 # set logging based on args
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=myloglevel)
 
 # openfiles
+logging.debug("[%s] loading", sfile)
 try:
-    val, clk = np.loadtxt(sfile, dtype=np.bool, skiprows=3, delimiter=' ', usecols=(2, 3), unpack=True)
+    #val, clk = np.loadtxt(sfile, dtype=np.bool, skiprows=3, delimiter=' ', usecols=(2, 3), unpack=True)
+    val, clk = np.loadtxt(sfile, dtype=np.bool, skiprows=3, delimiter=' ', usecols=(0, 1), unpack=True)
 except IOError as e:
     logging.error("[%s] cannot be opened!", sfile)
     logging.error(e)
@@ -42,13 +44,18 @@ except IOError as e:
 logging.debug("[%s] opened for reading", sfile)
 
 # add dummy clk switches at start and end
+logging.debug("add dummy clock tick")
 clk_se = np.insert(clk, 0, np.invert(clk[0]))
 clk_se = np.insert(clk_se, clk_se.size, np.invert(clk[-1]))
 
-clk_diff = np.ediff1d(clk_se)  # diff bitween consecutive rows
+logging.debug("edge and value detect")
+# clk_diff = np.ediff1d(clk_se)  # diff bitween consecutive rows
+clk_diff = np.logical_xor(clk_se[0:-1], clk_se[1:])
 clk_nzero = np.nonzero(clk_diff)[0]  # indecies of nonzero elements
-clk_offset = np.ediff1d(clk_nzero)//2  # stable value offset
-clk_stable_idx = np.ediff1d(clk_nzero)//2 + clk_nzero[:-1]  # stable index
+# clk_offset = np.ediff1d(clk_nzero)//2  # stable value offset
+# clk_stable_idx = clk_offset + clk_nzero[:-1]  # stable index
+# get last value of rising/falling edge
+clk_stable_idx = clk_nzero[1:-1]-1  # stable index
 val_stable = val[clk_stable_idx]  # stable values
 clk_stable = clk[clk_stable_idx]  # stable values
 
