@@ -27,17 +27,18 @@ vhdlan $cargs $src/Decoder12b14b.vhd
 vhdlan $cargs $src/SspDecoder12b14b.vhd
 vhdlan $cargs $src/SspEncoder12b14b.vhd
 vhdlan $cargs $src/syncbus.vhd
+vhdlan $cargs $src/ssp_enc12b14b_ext.vhd
 
 # compile verilog files
 vlogan $cargs $vsrc/lfsr.v
 vlogan $cargs $vsrc/lfsr_prbs_gen.v
 
 # This is the top
-vhdlan $cargs $src/ssp12b14b_tb.vhd
+vhdlan $cargs $src/ssp_enc12b14b_ext_tb.vhd
 
 # run the testbench
-vcs $cargs ssp12b14b_tb -debug_all
+vcs $cargs ssp_enc12b14b_ext_tb -debug_all
 # vcs ssp12b14b_tb -debug_all -R +vcs+vcdpluson -debug_pp
 
-echo "\n\n### You can run\nvcs ssp12b14b_tb -full64 -debug_all -R -gui"
+echo "\n\n### You can run\nvcs ssp_enc12b14b_ext_tb -full64 -debug_all -R -gui"
 echo "\nor ./simv"
