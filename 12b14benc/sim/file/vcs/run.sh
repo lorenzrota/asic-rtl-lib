@@ -22,9 +22,13 @@ vhdlan $cargs $src/Code12b14bPkg.vhd
 vhdlan $cargs $src/SspDeframer.vhd
 vhdlan $cargs $src/Decoder12b14b.vhd
 vhdlan $cargs $src/SspDecoder12b14b.vhd
+vhdlan $cargs $src/pd.vhd
+vhdlan $cargs $src/freq.vhd
+vhdlan $cargs $src/phasediff.vhd
+vhdlan $cargs $src/cdr.vhd
 
 # This is the top
-vhdlan $cargs $src/decodefile.vhd
+vhdlan $cargs $src/decodefile_cdr.vhd
 
 # run the testbench
 vcs $cargs decodefile -debug_all
