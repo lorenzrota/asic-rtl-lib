@@ -1,6 +1,4 @@
-This is a script to simulate spice output streams to a file using Synopsys VCS.
-
-The file in.txt should be prepared and cleaned by parsewave.py then
+This is a script to simulate a clock divider using Synopsys VCS.
 
 Simply execute ```./run.sh``` followed by either:
 
