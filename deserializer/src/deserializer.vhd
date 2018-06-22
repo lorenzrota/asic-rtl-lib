@@ -61,7 +61,7 @@ begin
             s_deser_valid <= '0';
             s_data_o  <= (others => '0');
             s_aligned     <= '0';
-        elsif rising_edge(clk_i) then -- must be falling edge
+        elsif rising_edge(clk_i) then
             -- right shift i.e. LSB 1st
             s_pdata       <= data_i & s_pdata(c_dwidth - 1 downto 1);
             s_deser_valid <= '0';
