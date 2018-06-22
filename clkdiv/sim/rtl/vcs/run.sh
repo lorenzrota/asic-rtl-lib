@@ -4,7 +4,7 @@
 # Faisal T. Abu-Nimeh 20171114
 
 # load vcs env variables
-source /afs/slac/g/reseng/synopsys/vcs-mx/M-2017.03-SP2/settings.csh
+source /afs/slac/g/reseng/synopsys/vcs-mx/N-2017.12-1/settings.csh
 
 # clean up some files
 rm -rf wlib simv* csrc DVEfiles inter.vpd ucli.key .vlogansetup.args
