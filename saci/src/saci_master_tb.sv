@@ -87,14 +87,17 @@ module saci_master_tb;
         end
     end
 
+    // reset
+    initial begin
+        RESET(50);  // reset for 5 clk TCYCLES
+    end
+
     // read stim file content
     initial begin
         integer stimfile = $fopen(`STIMFILE, "r");
         logic [51:0] saci_stimuli;
         int i=0;
         int fret;
-
-        RESET(5); // reset for 5 clk TCYCLES
 
         if (!stimfile)
             $display("Could not open stimfile");
