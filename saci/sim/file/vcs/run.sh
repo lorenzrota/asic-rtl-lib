@@ -7,7 +7,7 @@
 source /afs/slac/g/reseng/synopsys/vcs-mx/N-2017.12-1/settings.csh
 
 # clean up some files
-rm -rf wlib simv* csrc DVEfiles inter.vpd ucli.key .vlogansetup.args 64
+rm -rf AN.DB simv* csrc DVEfiles inter.vpd ucli.key .vlogansetup.args 64
 rm -rf .vlogansetup.env
 
 # compiler arguments
