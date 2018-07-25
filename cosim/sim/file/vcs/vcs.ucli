@@ -1,0 +1,3 @@
+dump -file cosim.vpd -type vpd
+dump -add saci_master_tb -depth 0 
+run

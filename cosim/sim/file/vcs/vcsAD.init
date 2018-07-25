@@ -1,0 +1,2 @@
+use_spice -cell SaciSlave2;
+choose finesim -np 12 -o saci_tb_cosim ../../../src/saci_tb.sp;
