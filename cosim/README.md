@@ -6,8 +6,8 @@ The file "saci.stim" is the raw stimulus file that is used to configure the ASIC
 
 The co-simulation will use a digital simulator and an analog simulator, vcs and finesim respectively.
 Currently, the simulation performs the following:
-1- SACI master (SystemVerilog) sends transactions to ASIC SACI slave.
-2- SACI slave (SPICE) accepts the transactions and read/writes them to a RAM (vhd). The RAM here represents the ControlUnit.
-3- The transactions are ploted in fsdb (analog) and vpd (digital) formats.
+* SACI master (SystemVerilog) sends transactions to ASIC SACI slave.
+* SACI slave (SPICE) accepts the transactions and read/writes them to a RAM (vhd). The RAM here represents the ControlUnit.
+* The transactions are ploted in fsdb (analog) and vpd (digital) formats.
 
 Execute ```./run.sh```
