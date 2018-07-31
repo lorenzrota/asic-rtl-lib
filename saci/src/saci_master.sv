@@ -135,7 +135,7 @@ module saci_master
                         s_slave_mask_i    <= slave_mask_i; // register mask
                         s_sel_n           <= slave_mask_i;
 
-                        if (data_i[g_dwidth-1]) // is saci WRITE?
+                        if (data_i[g_dwidth-2]) // is saci WRITE?
                             s_rsp_cnt <= g_dwidth;
                         else
                             s_rsp_cnt <= g_dwidth-32; // 21, FIXME make it generic
