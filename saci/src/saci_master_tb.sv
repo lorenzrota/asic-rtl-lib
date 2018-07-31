@@ -47,12 +47,12 @@ module saci_master_tb;
         .sel_n_o(saci_sel_n)
     );
 
-    SaciSlaveWrapper sslave (
-      .asicRstL(rst_n),
-      .saciClk(saci_clk),
-      .saciSelL(saci_sel_n[0]),
-      .saciCmd(saci_cmd),
-      .saciRsp(saci_rsp)
+    be_digital CRYO_ASIC_BE_Digital (
+      .gr(rst_n),
+      .clk(saci_clk),
+      .sacisell(saci_sel_n[0]),
+      .sacicmd(saci_cmd),
+      .sacirsp(saci_rsp)
     );
 
 
@@ -96,6 +96,10 @@ module saci_master_tb;
     initial begin
         integer stimfile = $fopen(`STIMFILE, "r");
         logic [51:0] saci_stimuli;
+        bit saci_readwrite;
+        logic [6:0] saci_cmd;
+        logic [11:0] saci_addr;
+        logic [31:0] saci_data;
         int i=0;
         int fret;
 
@@ -104,8 +108,9 @@ module saci_master_tb;
         else begin
             while(!$feof(stimfile)) begin
                 @(negedge saci_busy); // wait for busy to clear
-                fret = $fscanf(stimfile, "%h", saci_stimuli);
-                if (fret == 1) begin
+                fret = $fscanf(stimfile, "%h %h %h %h", saci_readwrite, saci_cmd, saci_addr,  saci_data);
+                if (fret == 4) begin
+                    saci_stimuli = {saci_readwrite, saci_cmd, saci_addr, saci_data};
                     $display("\tValue of saci_stimuli[%0d]=0x%x",i,saci_stimuli);
                     saci_datain = {1'b1, saci_stimuli}; // prepend start_bit
                     i++;
