@@ -25,7 +25,7 @@ entity ssp_enc12b14b_ext is
         clk_i   : in  std_logic; -- input clock
         fclk_i  : in  std_logic; -- frame clock to align test pattern
         rst_n_i : in  std_logic; -- active-low reset
-        valid_i : in  std_logic; -- data_i valid input for encoder
+        valid_i : in  std_logic; -- valid input for encoder
         mode_i  : in  std_logic_vector(2 downto 0); -- mode of operation
         data_i  : in  std_logic_vector(11 downto 0); -- data to be encoded
 
@@ -40,14 +40,14 @@ architecture rtl of ssp_enc12b14b_ext is
 
     signal s_pattern  : std_logic_vector(13 downto 0); -- wire, choosing any of the patterns below
 
-    signal s_pattern0  : std_logic_vector(13 downto 0); -- 0xA's followed by 0x5's
+    signal s_pattern0  : std_logic_vector(13 downto 0); -- sampled fclk_i
     signal s_pattern1  : std_logic_vector(13 downto 0); -- 0xA's followed by 0x5's
     signal s_pattern2  : std_logic_vector(13 downto 0); -- 000's followed by 111's
     signal s_pattern3  : std_logic_vector(13 downto 0); -- wire, LSB to MSB incremental ramp
 
     signal s_cnt_ramp : unsigned(13 downto 0); -- pattern3 ramp counter
 
-    signal s_data_i  : std_logic_vector(11 downto 0);  -- data_out
+    signal s_data_i  : std_logic_vector(11 downto 0);  -- data_i
     signal s_data_o  : std_logic_vector(13 downto 0);  -- data_out
     signal s_valid_i : std_logic; -- encoder data_i valid
     signal s_evenodd : std_logic; -- toggle flag
@@ -114,13 +114,13 @@ begin
                  s_pattern3 when mode_i(1 downto 0) = "11" else
                  (others => '0');
 
-    s_valid_i <= valid_i when mode_i = "000" else '0';
     s_data_i  <= data_i when mode_i = "000" else s_pattern(11 downto 0);
+    s_valid_i <= valid_i when mode_i(2) = '0' else '0';
 
     data_o <= s_data_o when mode_i(2) = '0' else s_pattern;
 
     -- generate s_patterns
-    tpattern : process(clk_i)
+    tpattern : process(clk_i, rst_n_i)
     begin
         if rst_n_i = '0' then -- async reset
             s_pattern0 <= (others => '0');
