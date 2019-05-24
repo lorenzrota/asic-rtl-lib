@@ -96,6 +96,7 @@ begin
     s_pattern2 <= (others => '0') when s_evenodd = '0' else (others => '1');
     s_pattern3 <= std_logic_vector(s_cnt_ramp);
 
+
     -- modes of operation
     -- M2 M1 M0 | Description
     -- -------- | -----------
@@ -114,11 +115,13 @@ begin
                  s_pattern3 when mode_i(1 downto 0) = "11" else
                  (others => '0');
 
+    ----s_valid_i <= valid_i when mode_i(2) = '0' else '0';
+    ---- changed on May 15,2019 by Dionisio and Aseem -----
+    s_valid_i <= valid_i when mode_i = "000" else '1';
+
     s_data_i  <= data_i when mode_i = "000" else s_pattern(11 downto 0);
-    s_valid_i <= valid_i when mode_i(2) = '0' else '0';
-
     data_o <= s_data_o when mode_i(2) = '0' else s_pattern;
-
+ 
     -- generate s_patterns
     tpattern : process(clk_i, rst_n_i)
     begin
