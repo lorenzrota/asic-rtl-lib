@@ -7,7 +7,7 @@ set pdk_dir [ getenv  "TSMC130_DIR" ]
 # source files
 set src_dir ../../src/ssp12b14benc
 
-set out_prefix enc12b14b
+set out_prefix ssp_enc12b14b_ext_g
 
 # use low temp lib
 set_attribute library $pdk_dir/Front_End/timing_power_noise/NLDM/tcb013ghp_220a/tcb013ghplt.lib
@@ -22,15 +22,16 @@ set_attribute cap_table_file $pdk_dir/Back_End/lef/tcb013ghp_211a/techfiles/t013
 set_attribute operating_condition LTCOM
 
 # read hdl design
-read_hdl -vhdl $src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/SspEncoder12b14b.vhd
+read_hdl -vhdl $src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/SspEncoder12b14b.vhd $src_dir/ssp_enc12b14b_ext.vhd
 
 # elaborate
 elab
 
-current_design SspEncoder12b14b
+#current_design SspEncoder12b14b-- changed on May 17, 2019 by Aseem G
+current_design ssp_enc12b14b_ext
 
 # SDC, Main clock is 100MHz
-create_clock [get_ports {clk}] -name clk -period 10 -waveform {0 5}
+create_clock [get_ports {clk_i}] -name clk_i -period 10 -waveform {0 5}
 
 # synthesize
 synthesize -to_mapped
@@ -42,7 +43,8 @@ report timing > ${out_prefix}_timing.rpt
 report power > ${out_prefix}_power.rpt
 
 # prepare design to encounter
-write_design -encounter SspEncoder12b14b
+#write_design -encounter SspEncoder12b14b
+write_design -encounter ssp_enc12b14b_ext
 
 # export netlist, timing, and delay files
 write_hdl > $out_prefix.v

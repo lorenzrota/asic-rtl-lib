@@ -27,7 +27,8 @@ end entity;
 
 architecture arch of ssp12b14b_g_tb is
     constant clk_period : time := 10 ns;
-
+   --- qdded fclk period
+    constant fclk_period: time := 80 ns;
     -- constants to interface with SLAC's modules
     constant c_tpd       : time     := 1 ns; -- SLAC's timing
     constant c_rst_async : boolean  := true; -- synchronize reset
@@ -35,10 +36,13 @@ architecture arch of ssp12b14b_g_tb is
 
     -- signals
     signal s_clk   : std_logic;
+    signal s_fclk   : std_logic;
+    signal s_fclk_start   : std_logic := '0';
     signal s_rst   : std_logic;
     signal s_rst_n : std_logic;
 
     signal s_enc_valid_i : std_logic := '0';
+    signal s_mode_i :std_logic_vector(2 downto 0 ) := (others => '0');
 
     signal s_enc_data_i : std_logic_vector(11 downto 0) := (others => '0');
     signal s_enc_data_o : std_logic_vector(13 downto 0) := (others => '0');
@@ -86,17 +90,30 @@ architecture arch of ssp12b14b_g_tb is
 
     -- SSP 12b14b Enconder
     -- uses SLAC's naming convention
-    component SspEncoder12b14b is
-        port(
-            clk_i   : in  std_logic;
-            rst_n_i : in  std_logic;
-            valid_i : in  std_logic;
-            data_i  : in  std_logic_vector(11 downto 0);
+--------------------------------------------------------------------------------------------------------------------------------
+-------------------------------------commented out by Aseem G on May 17, 2019 to be in compliance with RTL TestBench-------------------
+    --component SspEncoder12b14b is
+      --  port(
+       --     clk_i   : in  std_logic;
+       --     rst_n_i : in  std_logic;
+       --     valid_i : in  std_logic;
+       --     data_i  : in  std_logic_vector(11 downto 0);
             
-            data_o  : out std_logic_vector(13 downto 0)
-        );
-    end component;
-
+       --     data_o  : out std_logic_vector(13 downto 0)
+      --  );
+   ---- end component;
+-------------------------------------------------------------------------------------------
+   component ssp_enc12b14b_ext is
+        port(
+            clk_i  : in std_logic; -- input clock
+            fclk_i  : in std_logic; -- frame clock to align test pattern when used 
+            rst_n_i : in std_logic; -- active-low reset 
+            valid_i : in std_logic; -- data_i valid input for encoder
+            mode_i  : in std_logic_vector(2 downto 0); -- mode of operation   
+            data_i  : in std_logic_vector(11 downto 0); -- data to be encoded   
+            data_o  : out std_logic_vector(13 downto 0) -- output data
+            );
+  end component ;  
     -- SSP 12b14b Decoder
     -- uses SLAC's naming convention
     component SspDecoder12b14b is
@@ -143,13 +160,26 @@ begin
             async_i => s_prbs_dout,
             syncd_o => s_prbs_dout_d7
         );
-
-    -- component instantiation
-    U_SspEncoder12b14b : SspEncoder12b14b
+--------------------------------------------------------------------
+     -- component instantiation
+    ---U_SspEncoder12b14b : SspEncoder12b14b
+    --    port map(
+    --        clk_i   => s_clk,
+    --        rst_n_i => s_rst_n,
+    --        valid_i => s_enc_valid_i,
+    --        data_i  => s_enc_data_i,
+    --        data_o  => s_enc_data_o
+    --    );
+--------------------------------------------------------
+-------------added to be complaint with the RTL wrapper-----------
+ -- component instantiation
+    u_ssp_enc12b14b_ext : ssp_enc12b14b_ext 
         port map(
             clk_i   => s_clk,
+            fclk_i   => s_fclk,
             rst_n_i => s_rst_n,
             valid_i => s_enc_valid_i,
+            mode_i =>  s_mode_i,
             data_i  => s_enc_data_i,
             data_o  => s_enc_data_o
         );
@@ -182,7 +212,21 @@ begin
         wait for clk_period / 2;
     end process p_clk_gen;
 
-    -- generate reset for testbench
+    p_fclk_gen : process is
+    begin
+        -- one time delay
+        if s_fclk_start = '0' then
+            s_fclk_start <= '1';
+            wait for clk_period;
+        end if;
+
+        s_fclk <= '0';
+        wait for fclk_period / 2;
+        s_fclk <= '1';
+        wait for fclk_period / 2;
+    end process p_fclk_gen;
+
+       -- generate reset for testbench
     p_rst_gen : process is
     begin
         s_rst   <= '1';
@@ -199,9 +243,33 @@ begin
     begin
         wait until s_clk = '1';
         wait until s_rst = '0';
+        s_mode_i <= "000" ;
+        wait for 30 * clk_period ;   -- wait for sometime to see IDLE
         wait until s_clk = '1';
 
         report "Number of random iterations to test: " & positive'image(c_num_tests);
+
+
+        -- other modes
+        s_mode_i <= "001";
+         wait for 500 * clk_period;
+        s_mode_i <= "010";
+        wait for 500 * clk_period;
+        s_mode_i <= "011";
+        wait for 500 * clk_period;
+        s_mode_i <= "100";
+        wait for 500 * clk_period;
+
+        s_mode_i <= "101";
+        wait for 500 * clk_period;
+        s_mode_i <= "110";
+        wait for 500 * clk_period;
+        s_mode_i <= "111";
+        wait for 500 * clk_period;
+
+
+        s_mode_i <= "000" ;
+        wait for 30 * clk_period ;   -- wait for sometime to see IDLE
 
         for j in 0 to c_num_tests loop
             wait until s_clk = '1';

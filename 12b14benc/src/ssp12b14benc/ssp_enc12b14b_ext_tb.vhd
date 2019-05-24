@@ -234,14 +234,22 @@ begin
         wait until s_dec_valid = '0';
 
         -- other modes
+        s_mode_i <= "001";
+         wait for 500 * clk_period;
+        s_mode_i <= "010";
+        wait for 500 * clk_period;
+        s_mode_i <= "011";
+        wait for 500 * clk_period;
         s_mode_i <= "100";
         wait for 500 * clk_period;
+
         s_mode_i <= "101";
         wait for 500 * clk_period;
         s_mode_i <= "110";
         wait for 500 * clk_period;
         s_mode_i <= "111";
         wait for 500 * clk_period;
+    
 
         report "Simulation finished successfully" severity failure;
     end process p_data_gen;
