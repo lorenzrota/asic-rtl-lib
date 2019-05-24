@@ -43,7 +43,10 @@ architecture arch of ssp_enc12b14b_ext_tb is
     signal s_enc_valid_i : std_logic := '0';
     signal s_mode_i : std_logic_vector(2 downto 0) := (others => '0');
 
+--------------- added start_ro signal in the testbench-----------------------
+    signal s_start_ro     :  std_logic := '0' ;
 
+--------------- added start_ro signal in the testbench-----------------------
     signal s_enc_data_i : std_logic_vector(11 downto 0) := (others => '0');
     signal s_enc_data_o : std_logic_vector(13 downto 0) := (others => '0');
 
@@ -91,7 +94,8 @@ architecture arch of ssp_enc12b14b_ext_tb is
     -- SSP 12b14b Enconder wrapper
     component ssp_enc12b14b_ext is
         port(
-            clk_i   : in  std_logic; -- input clock
+            start_ro: in  std_logic; -- start DAQ
+	    clk_i   : in  std_logic; -- input clock
             fclk_i  : in  std_logic; -- frame clock to align test pattern when used
             rst_n_i : in  std_logic; -- active-low reset
             valid_i : in  std_logic; -- data_i valid input for encoder
@@ -140,7 +144,7 @@ begin
 
     usync : syncbus
         generic map(
-            g_stages => 7,
+            g_stages => 9,
             g_width  => 12)
         port map(
             clk_i   => s_clk,
@@ -152,6 +156,7 @@ begin
     -- component instantiation
     u_ssp_enc12b14b_ext : ssp_enc12b14b_ext
         port map(
+            start_ro => s_start_ro,
             clk_i   => s_clk,
             fclk_i   => s_fclk,
             rst_n_i => s_rst_n,
@@ -227,6 +232,8 @@ begin
         s_mode_i <= "000";
         for j in 0 to c_num_tests loop
             wait until s_clk = '1';
+            ----- added by Aseem Gupta on May 23, 2019 for inclusion of SRO in TB-------------
+            s_start_ro    <= '1';
             s_enc_valid_i <= '1';
             s_enc_data_i  <= s_prbs_dout;
         end loop;
@@ -234,23 +241,30 @@ begin
         wait until s_dec_valid = '0';
 
         -- other modes
+        s_start_ro    <= '0';
         s_mode_i <= "001";
-         wait for 500 * clk_period;
+        wait for 50 * clk_period;
+        s_start_ro    <= '1';
+        wait for 500 * clk_period;
         s_mode_i <= "010";
         wait for 500 * clk_period;
         s_mode_i <= "011";
         wait for 500 * clk_period;
         s_mode_i <= "100";
-        wait for 500 * clk_period;
-
+        for j in 0 to c_num_tests loop
+            wait until s_clk = '1';        
+            s_enc_data_i  <= s_prbs_dout;
+        end loop;       
+---------------------------------------------
         s_mode_i <= "101";
         wait for 500 * clk_period;
         s_mode_i <= "110";
         wait for 500 * clk_period;
         s_mode_i <= "111";
         wait for 500 * clk_period;
-    
-
+        s_start_ro    <= '0';
+        wait for 500 * clk_period;
+        
         report "Simulation finished successfully" severity failure;
     end process p_data_gen;
 

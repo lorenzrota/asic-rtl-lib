@@ -27,8 +27,7 @@ vhdlan $cargs $src/Decoder12b14b.vhd
 vhdlan $cargs $src/SspDecoder12b14b.vhd
 vhdlan $cargs $src/SspEncoder12b14b.vhd
 vhdlan $cargs $src/syncbus.vhd
-##vhdlan $cargs $src/ssp_enc12b14b_ext.vhd
-vhdlan $cargs $src/ssp_enc12b14b_ext_rev2.vhd
+vhdlan $cargs $src/ssp_enc12b14b_ext.vhd
 
 # compile verilog files
 vlogan $cargs $vsrc/lfsr.v
