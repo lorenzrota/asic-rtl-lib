@@ -80,7 +80,7 @@ architecture arch of ssp_enc12b14b_ext_tb is
     -- syncbus is used to delay output
     component syncbus is
         generic(
-            g_stages : positive := 7;
+            g_stages : positive := 9;
             g_width  : positive := 12
         );
         port(
@@ -249,7 +249,7 @@ begin
         s_mode_i <= "010";
         wait for 500 * clk_period;
         s_mode_i <= "011";
-        wait for 500 * clk_period;
+        wait for 500 * clk_period; ---wait periods added to see pattern data
         s_mode_i <= "100";
         for j in 0 to c_num_tests loop
             wait until s_clk = '1';        
