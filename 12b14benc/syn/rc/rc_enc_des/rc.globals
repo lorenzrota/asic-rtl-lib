@@ -1,0 +1,29 @@
+#####################################################################
+#
+# First Encounter input globals file
+# Created by Encounter(R) RTL Compiler on 06/11/2019 14:54:04
+#
+#####################################################################
+global setUserDataValue
+global set_global
+set cwd lpwd
+setUserDataValue init_verilog {rc_enc_des/rc.v}
+setUserDataValue init_design_netlisttype {Verilog}
+setUserDataValue init_design_settop {1}
+setUserDataValue init_top_cell {ssp_enc12b14b_ext}
+setUserDataValue init_mmmc_file {rc_enc_des/rc.mmode.tcl}
+setUserDataValue init_lef_file {/home/slac_designs/PPA/cryo_v2.0/tsmc130mm/TSMCHOME/digital/Back_End/lef/tcb013ghp_211a/lef/tsmc013gFsg_8lm.lef /home/slac_designs/PPA/cryo_v2.0/tsmc130mm/TSMCHOME/digital/Back_End/lef/tcb013ghp_211a/lef/tcb013ghp.lef}
+setUserDataValue fp_core_cntl {aspect}
+setUserDataValue fp_aspect_ratio {1.0000}
+setUserDataValue extract_shrink_factor {1.0}
+setUserDataValue init_assign_buffer {0}
+
+
+setUserDataValue init_cpf_file {}
+
+########## RTL ##########
+#setUserDataValue init_design_netlisttype {RTL}
+
+
+
+
