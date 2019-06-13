@@ -18,7 +18,8 @@ mkdir -p wlib
 set cargs='-nc' # common arguments
 set src=../../../src/ssp12b14benc
 set vsrc=../../../src/verilog-lfsr/rtl
-set gsrc=../../../syn/dc
+## cadence RC compiler is used . 
+set gsrc=../../../syn/rc
 # compile vhd files
 vhdlan $cargs $src/StdRtlPkg.vhd
 vhdlan $cargs $src/Code12b14bPkg.vhd
@@ -29,7 +30,7 @@ vhdlan $cargs $src/Decoder12b14b.vhd
 vhdlan $cargs $src/SspDecoder12b14b.vhd
 # vhdlan $cargs $src/SspEncoder12b14b.vhd
 # modified by Aseem G on May 16, 2019
-#vhdlan $cargs $src/SspEncoder12b14b.vhd
+vhdlan $cargs $src/SspEncoder12b14b.vhd
 vhdlan $cargs $src/syncbus.vhd
 
 # compile verilog files
@@ -40,12 +41,14 @@ vlogan $cargs $TSMC130_DIR/Front_End/verilog/tcb013ghp_220a/tcb013ghp.v
 # gate-level file
 #vlogan $cargs $gsrc/enc.v
 ##--------cadence file instead------
-vlogan $gsrc/ssp_enc12b14b_ext_g_cad.v
+vlogan $gsrc/ssp_enc12b14b_ext_g.v
 
 # This is the top
 vhdlan $cargs $src/ssp12b14b_g_tb.vhd
 
 # run the testbench
+vcs  +compsdf 
 vcs $cargs ssp12b14b_g_tb -debug_all
+##### SDF BACK ANNOTATION ################
 echo "\n\n### You can run\nvcs ssp12b14b_g_tb -debug_all -R -gui"
 echo "\nor ./simv"
