@@ -24,7 +24,7 @@ set src_dir ../../src/ssp12b14benc
 #### modified by Aseem G on May 16. 2019
 set vhdl_infiles {$src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/Cryo_SspEncoder12b14b.vhd $src_dir/ssp_enc12b14b_ext.vhd}
 read_vhdl $vhdl_infiles
-#current_design Cryo_SspEncoder12b14b--------------------- added by Aseem G on May 16, 2019  and changed the name to match with RTL Simulations
+#current_design Cryo_SspEncoder12b14b--------------------- added by Aseem G on May 16, 2019 , changed the name to  to match with RTL Simulations
 current_design ssp_enc12b14b_ext
 #elaborate Cryo_SspEncoder12b14b
 

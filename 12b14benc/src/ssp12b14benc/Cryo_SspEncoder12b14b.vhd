@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
--- File       : SspEncoder12b14b.vhd
+-- File       : Cryo_SspEncoder12b14b.vhd
 -- Company    : SLAC National Accelerator Laboratory
 -- Created    : 2014-07-14
 -- Last update: 2017-05-01
+-- Last update_rev2: 2019-07-02 by Aseem Gupta to have orginal PIN_OUT of SURF library. SspEncoder12b14b is now Cryo_SspEncoder12b14b(5 ports)
 -------------------------------------------------------------------------------
 -- Description: SimpleStreamingProtocol - A simple protocol layer for inserting
 -- idle and framing control characters into a raw data stream. This module
@@ -25,7 +26,7 @@ use ieee.std_logic_1164.all;
 use work.StdRtlPkg.all;
 use work.Code12b14bPkg.all;
 
-entity SspEncoder12b14b is
+entity Cryo_SspEncoder12b14b is
     generic(
         RST_POLARITY_G : sl      := '0'; -- active-low reset
         RST_ASYNC_G    : boolean := true;
@@ -39,9 +40,9 @@ entity SspEncoder12b14b is
 
         data_o  : out std_logic_vector(13 downto 0)
     );
-end entity SspEncoder12b14b;
+end entity Cryo_SspEncoder12b14b;
 
-architecture rtl of SspEncoder12b14b is
+architecture rtl of Cryo_SspEncoder12b14b is
 
     signal s_frame  : std_logic_vector(11 downto 0); -- := (others => '0');
     signal s_framek : std_logic_vector(0 downto 0); --  := (others => '0');

@@ -25,7 +25,7 @@ vhdlan $cargs $src/SspFramer.vhd
 vhdlan $cargs $src/SspDeframer.vhd
 vhdlan $cargs $src/Decoder12b14b.vhd
 vhdlan $cargs $src/SspDecoder12b14b.vhd
-vhdlan $cargs $src/SspEncoder12b14b.vhd
+vhdlan $cargs $src/Cryo_SspEncoder12b14b.vhd
 vhdlan $cargs $src/syncbus.vhd
 vhdlan $cargs $src/ssp_enc12b14b_ext.vhd
 

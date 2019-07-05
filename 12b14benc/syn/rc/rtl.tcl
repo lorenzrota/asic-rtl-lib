@@ -22,12 +22,12 @@ set_attribute cap_table_file $pdk_dir/Back_End/lef/tcb013ghp_211a/techfiles/t013
 set_attribute operating_condition LTCOM
 
 # read hdl design
-read_hdl -vhdl $src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/SspEncoder12b14b.vhd $src_dir/ssp_enc12b14b_ext.vhd
+read_hdl -vhdl $src_dir/StdRtlPkg.vhd $src_dir/Code12b14bPkg.vhd $src_dir/SspFramer.vhd $src_dir/Encoder12b14b.vhd $src_dir/Cryo_SspEncoder12b14b.vhd $src_dir/ssp_enc12b14b_ext.vhd
 
 # elaborate
 elab
 
-#current_design SspEncoder12b14b-- changed on May 17, 2019 by Aseem G
+#current_design Cryo_SspEncoder12b14b-- changed on May 17, 2019 and on July 2,2019 changed to name to Cryo_SspEncoder12b14b by Aseem G
 current_design ssp_enc12b14b_ext
 
 # SDC, Main clock is 100MHz
@@ -43,7 +43,7 @@ report timing > ${out_prefix}_timing.rpt
 report power > ${out_prefix}_power.rpt
 
 # prepare design to encounter
-#write_design -encounter SspEncoder12b14b
+#write_design -encounter Cryo_SspEncoder12b14b
 write_design -encounter ssp_enc12b14b_ext
 
 # export netlist, timing, and delay files
