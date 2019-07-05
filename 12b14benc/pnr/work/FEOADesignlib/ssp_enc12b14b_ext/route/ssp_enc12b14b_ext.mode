@@ -1,0 +1,126 @@
+catch { setDesignMode -process 130 }
+catch { setAnalysisMode -analysisType onChipVariation }
+catch { setAnalysisMode -checkType setup }
+catch { setAnalysisMode -clkSrcPath true }
+catch { setAnalysisMode -clockPropagation sdcControl }
+catch { setAnalysisMode -skew true }
+catch { setAnalysisMode -usefulSkew true }
+catch { setAnalysisMode -virtualIPO false }
+catch { setOptMode -activeHoldViews { WCCOM } }
+catch { setOptMode -activeSetupViews { WCCOM } }
+catch { setOptMode -autoHoldViews { WCCOM } }
+catch { setOptMode -autoSetupViews { WCCOM} }
+catch { setOptMode -bufferAssignNets true }
+catch { setOptMode -deleteInst true }
+catch { setOptMode -drcMargin 0 }
+catch { setOptMode -effort high }
+catch { setOptMode -fixDrc true }
+catch { setOptMode -holdTargetSlack 0 }
+catch { setOptMode -leakagePowerEffort none }
+catch { setOptMode -maxDensity 0.95 }
+catch { setOptMode -maxLocalDensity 0.98 }
+catch { setOptMode -optimizeFF true }
+catch { setOptMode -preserveAllSequential false }
+catch { setOptMode -reclaimArea true }
+catch { setOptMode -rPlace true }
+catch { setOptMode -setupTargetSlack 0 }
+catch { setOptMode -simplifyNetlist true }
+catch { setOptMode -usefulSkew false }
+catch { setOptMode -yieldEffort none }
+setExtractRCMode  -engine postRoute -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.4 -minNetTermNrToBeInMem 50
+catch { setCTSMode -addClockRootProp false }
+catch { setCTSMode -fixLeafInst true }
+catch { setCTSMode -fixNonLeafInst true }
+catch { setCTSMode -honorFence false }
+catch { setCTSMode -moveGate true }
+catch { setCTSMode -nameSingleDelim false }
+catch { setCTSMode -opt true }
+catch { setCTSMode -optAddBuffer true }
+catch { setCTSMode -reportHTML false }
+catch { setCTSMode -routeBottomPreferredLayer METAL2 }
+catch { setCTSMode -routeClkNet true }
+catch { setCTSMode -routeGuide true }
+catch { setCTSMode -routePreferredExtraSpace 1 }
+catch { setCTSMode -routeTopPreferredLayer METAL3 }
+catch { setCTSMode -traceDPinAsLeaf true }
+catch { setCTSMode -traceIoPinAsLeaf true }
+catch { setCTSMode -useHVRC true }
+catch { setCTSMode -useLefACLimit false }
+catch { setCTSMode -useLibMaxCap false }
+catch { setCTSMode -useLibMaxFanout false }
+catch { setCTSMode -verbose false }
+catch {setNanoRouteMode -quiet -drouteAntennaFactor 1.000000}
+catch {setNanoRouteMode -quiet -drouteFixAntenna true}
+catch {setNanoRouteMode -quiet -drouteOnGridOnly "none"}
+catch {setNanoRouteMode -quiet -droutePostRouteSpreadWire "false"}
+catch {setNanoRouteMode -quiet -droutePostRouteSwapVia "none"}
+catch {setNanoRouteMode -quiet -droutePostRouteWidenWireRule "NA"}
+catch {setNanoRouteMode -quiet -drouteStartIteration 0}
+catch {setNanoRouteMode -quiet -drouteViaOnGridOnly false}
+catch {setNanoRouteMode -quiet -grouteExpTdStdDelay 38.100000}
+catch {setNanoRouteMode -quiet -routeAntennaCellName "ANTENNA"}
+catch {setNanoRouteMode -quiet -routeBottomRoutingLayer 0}
+catch {setNanoRouteMode -quiet -routeInsertAntennaDiode true}
+catch {setNanoRouteMode -quiet -routeInsertDiodeForClockNets true}
+catch {setNanoRouteMode -quiet -routeStrictlyHonorNonDefaultRule "true"}
+catch {setNanoRouteMode -quiet -routeTopRoutingLayer 4}
+catch {setNanoRouteMode -quiet -routeWithSiDriven false}
+catch {setNanoRouteMode -quiet -routeWithSiPostRouteFix false}
+catch {setNanoRouteMode -quiet -routeWithTimingDriven false}
+
+catch { setPlaceMode -modulePlan true }
+catch { setPlaceMode -place_detail_check_route false }
+catch { setPlaceMode -place_detail_preserve_routing false }
+catch { setPlaceMode -place_detail_remove_affected_routing false }
+catch { setPlaceMode -place_detail_swap_eeq_cells false }
+catch { setPlaceMode -place_global_clock_gate_aware false }
+catch { setPlaceMode -place_global_cong_effort high }
+catch { setPlaceMode -place_global_ignore_scan true }
+catch { setPlaceMode -place_global_ignore_spare true }
+catch { setPlaceMode -place_global_module_aware_spare false }
+catch { setPlaceMode -place_global_place_io_pins true }
+catch { setPlaceMode -place_global_reorder_scan true }
+catch { setPlaceMode -powerDriven false }
+catch { setPlaceMode -timingDriven true }
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepFlatten true }
+catch { setPlanDesignMode -fixPlacedMacros true }
+catch { setViaGenMode -parameterized_via_only true }
+catch { setViaGenMode -symmetrical_via_only true }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -eng_copyNetPropToNewNet true }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setDelayCalMode -SIAware true }
+catch { setTrialRouteMode -autoSkipTracks false }
+catch { setTrialRouteMode -blockageCostMultiple 1 }
+catch { setTrialRouteMode -detour true }
+catch { setTrialRouteMode -floorPlanMode false }
+catch { setTrialRouteMode -handlePartition false }
+catch { setTrialRouteMode -handlePartitionComplex false }
+catch { setTrialRouteMode -handlePreroute true }
+catch { setTrialRouteMode -highEffort false }
+catch { setTrialRouteMode -honorPin false }
+catch { setTrialRouteMode -ignoreAbutted2TermNet false }
+catch { setTrialRouteMode -ignoreDEFTrack false }
+catch { setTrialRouteMode -ignoreObstruct false }
+catch { setTrialRouteMode -keepExistingRoutes false }
+catch { setTrialRouteMode -keepMarkedOptRoutes true }
+catch { setTrialRouteMode -maxDetourRatio 0 }
+catch { setTrialRouteMode -maxRouteLayer 4 }
+catch { setTrialRouteMode -minRouteLayer 0 }
+catch { setTrialRouteMode -pinGuide true }
+catch { setTrialRouteMode -PKS false }
+catch { setTrialRouteMode -printWiresOnRTBlk false }
+catch { setTrialRouteMode -routeGuide {} }
+catch { setTrialRouteMode -routeObs true }
+catch { setTrialRouteMode -selMarkedNet false }
+catch { setTrialRouteMode -selMarkedNetOnly false }
+catch { setTrialRouteMode -selNet {} }
+catch { setTrialRouteMode -selNetOnly {} }
+catch { setTrialRouteMode -updateRemainTrks false }
+catch { setTrialRouteMode -useM1 false }
+catch { setTrialRouteMode -usePagedArray false }
+catch { setHierMode -disableArt false }
+catch { setHierMode -reportPostRouteArtTiming false }
+catch { setHierMode -trialRouteHonorReadOnly false }
+catch { setSIMode -separate_delta_delay_on_data true }

@@ -1,0 +1,73 @@
+catch { setDesignMode -process 130 }
+catch { setAnalysisMode -analysisType onChipVariation }
+catch { setAnalysisMode -clkSrcPath true }
+catch { setAnalysisMode -clockPropagation sdcControl }
+catch { setAnalysisMode -usefulSkew true }
+catch { setAnalysisMode -virtualIPO false }
+catch { setOptMode -activeHoldViews { WCCOM } }
+catch { setOptMode -activeSetupViews { WCCOM } }
+catch { setOptMode -autoSetupViews { WCCOM} }
+catch { setOptMode -bufferAssignNets true }
+catch { setOptMode -drcMargin 0 }
+catch { setOptMode -effort high }
+catch { setOptMode -fixDrc true }
+catch { setOptMode -maxLocalDensity 0.98 }
+catch { setOptMode -optimizeFF true }
+catch { setOptMode -rPlace true }
+catch { setOptMode -setupTargetSlack 0 }
+setExtractRCMode  -engine preRoute -total_c_th 0 -relative_c_th 1 -coupling_c_th 0.4
+catch {setNanoRouteMode -quiet -grouteExpTdStdDelay 38.100000}
+catch {setNanoRouteMode -quiet -routeTopRoutingLayer 4}
+
+catch { setPlaceMode -modulePlan true }
+catch { setPlaceMode -place_detail_check_route false }
+catch { setPlaceMode -place_detail_preserve_routing false }
+catch { setPlaceMode -place_detail_remove_affected_routing false }
+catch { setPlaceMode -place_detail_swap_eeq_cells false }
+catch { setPlaceMode -place_global_clock_gate_aware false }
+catch { setPlaceMode -place_global_cong_effort high }
+catch { setPlaceMode -place_global_ignore_scan true }
+catch { setPlaceMode -place_global_ignore_spare true }
+catch { setPlaceMode -place_global_module_aware_spare false }
+catch { setPlaceMode -place_global_place_io_pins true }
+catch { setPlaceMode -place_global_reorder_scan true }
+catch { setPlaceMode -powerDriven false }
+catch { setPlaceMode -timingDriven true }
+catch { setIlmMode -keepHighFanoutPorts true -keepLoopBack false -keepFlatten true }
+catch { setPlanDesignMode -fixPlacedMacros true }
+catch { setViaGenMode -parameterized_via_only true }
+catch { setViaGenMode -symmetrical_via_only true }
+catch { setDelayCalMode -enable_high_fanout true }
+catch { setDelayCalMode -eng_copyNetPropToNewNet true }
+catch { setDelayCalMode -engine aae }
+catch { setDelayCalMode -ignoreNetLoad false }
+catch { setTrialRouteMode -autoSkipTracks false }
+catch { setTrialRouteMode -blockageCostMultiple 1 }
+catch { setTrialRouteMode -detour true }
+catch { setTrialRouteMode -floorPlanMode false }
+catch { setTrialRouteMode -handlePartition false }
+catch { setTrialRouteMode -handlePartitionComplex false }
+catch { setTrialRouteMode -handlePreroute true }
+catch { setTrialRouteMode -highEffort false }
+catch { setTrialRouteMode -honorPin false }
+catch { setTrialRouteMode -ignoreAbutted2TermNet false }
+catch { setTrialRouteMode -ignoreDEFTrack false }
+catch { setTrialRouteMode -ignoreObstruct false }
+catch { setTrialRouteMode -keepExistingRoutes false }
+catch { setTrialRouteMode -keepMarkedOptRoutes true }
+catch { setTrialRouteMode -maxDetourRatio 0 }
+catch { setTrialRouteMode -maxRouteLayer 4 }
+catch { setTrialRouteMode -minRouteLayer 0 }
+catch { setTrialRouteMode -pinGuide true }
+catch { setTrialRouteMode -PKS false }
+catch { setTrialRouteMode -printWiresOnRTBlk false }
+catch { setTrialRouteMode -routeGuide {} }
+catch { setTrialRouteMode -routeObs true }
+catch { setTrialRouteMode -selMarkedNet false }
+catch { setTrialRouteMode -selMarkedNetOnly false }
+catch { setTrialRouteMode -selNet {} }
+catch { setTrialRouteMode -selNetOnly {} }
+catch { setTrialRouteMode -updateRemainTrks false }
+catch { setTrialRouteMode -useM1 false }
+catch { setTrialRouteMode -usePagedArray false }
+catch { setSIMode -separate_delta_delay_on_data true }

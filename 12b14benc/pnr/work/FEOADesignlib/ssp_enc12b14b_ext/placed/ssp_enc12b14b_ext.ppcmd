@@ -1,0 +1,274 @@
+# PPCMD 1 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 3 -merge_stripes_value 0.41 -layer METAL6 -block_ring_bottom_layer_limit METAL1 -stop_x 190 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 6 -stacked_via_bottom_layer METAL1 -start_y 0
+# 17 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 270 250 198230 58010 0 
+# 2270 2250 196230 56010 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1500 6 0 10500 190000 7000 0 0 
+# VDD 1500 6 0 6000 190000 7000 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 1 
+
+# PPCMD 2 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -stop_x 0 -stop_y 7 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 53
+# 16 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 270 1850 198230 59610 0 
+# 2270 3850 196230 57610 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1500 5 0 11500 53000 7000 0 0 
+# VDD 1500 5 0 7000 53000 7000 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 2 
+
+# PPCMD 3 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -stop_x 0 -stop_y 7 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 53
+# 15 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 270 1850 198230 59610 0 
+# 2270 3850 196230 57610 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1500 5 0 8800 53000 700 0 0 
+# VDD 1500 5 0 7000 53000 700 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 3 
+
+# PPCMD 4 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 52 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 14 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 4 
+
+# PPCMD 5 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -start_from top -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 52 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 13 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 5 
+
+# PPCMD 6 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -ybottom_offset 5 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -start_from top -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset {} -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 12 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 6 
+
+# PPCMD 7 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -start_from top -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 5 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 11 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 7 
+
+# PPCMD 8 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 20 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 10 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 8 
+
+# PPCMD 9 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 10 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 9 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 9 
+
+# PPCMD 10 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 8 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 270 1850 198230 59610 0 
+# 2270 3850 196230 57610 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1500 5 0 5900 55760 700 0 0 
+# VDD 1500 5 0 4100 55760 700 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 10 
+
+# PPCMD 11 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 6 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 7 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 11 
+
+# PPCMD 12 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -ytop_offset 2 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 6 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 12 
+
+# PPCMD 13 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -merge_stripes_value 0.41 -direction horizontal -layer METAL5 -block_ring_bottom_layer_limit METAL1 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 5 
+# 2 
+# 1 
+# 0 
+# 0 
+# 2 
+# BOX_LIST 
+# 270 1850 198230 59610 0 
+# 2270 3850 196230 57610 0 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1500 5 0 5900 55760 700 0 0 
+# VDD 1500 5 0 4100 55760 700 0 0 
+# END_NET_INFO_LIST 
+# END_PPCMD 13 
+
+# PPCMD 14 
+# addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit METAL1 -max_same_layer_jog_length 0.8 -padcore_ring_bottom_layer_limit METAL1 -set_to_set_distance 0.7 -skip_via_on_pin Standardcell -stacked_via_top_layer METAL8 -padcore_ring_top_layer_limit METAL1 -spacing 0.3 -xleft_offset 2 -merge_stripes_value 0.41 -layer METAL5 -block_ring_bottom_layer_limit METAL1 -stop_x 0 -stop_y 0 -width 1.5 -area {} -nets {VDD VSS} -start_x 0 -stacked_via_bottom_layer METAL1 -start_y 0
+# 4 
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 14 
+
+# PPCMD 15 
+# addRing -skip_via_on_wire_shape Noshape -spacing_bottom 0.4 -width_left 1.6 -width_bottom 1.6 -width_top 1.6 -spacing_top 0.4 -skip_via_on_pin Standardcell -layer_bottom METAL5 -center 1 -stacked_via_top_layer METAL8 -width_right 1.6 -type core_rings -jog_distance 0.41 -offset_bottom 0.41 -layer_top METAL5 -threshold 0.41 -offset_left 0.41 -spacing_right 0.4 -spacing_left 0.4 -offset_right 0.41 -offset_top 0.41 -layer_right METAL6 -nets {VDD VSS} -follow core -stacked_via_bottom_layer METAL1 -layer_left METAL6
+# 3 
+# 32 
+# 1 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# VSS 1600 5 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 100050 1050 100050 58810 
+# END_RING_PT_INFO_LIST 
+# VSS 1600 6 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 1070 29930 199030 29930 
+# END_RING_PT_INFO_LIST 
+# VDD 1600 5 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 100050 3050 100050 56810 
+# END_RING_PT_INFO_LIST 
+# VDD 1600 6 1 0 0 0 0 0 
+# RING_PT_INFO_LIST 
+# 3070 29930 197030 29930 
+# END_RING_PT_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 15 
+
+# PPCMD 16 
+# setViaGenMode -parameterized_via_only true
+# 2 
+# 0 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 16 
+
+# PPCMD 17 
+# setViaGenMode -symmetrical_via_only true
+# 1 
+# 0 
+# 0 
+# 0 
+# 0 
+# 0 
+# BOX_LIST 
+# END_BOX_LIST 
+# NET_INFO_LIST 
+# END_NET_INFO_LIST 
+# END_PPCMD 17 
+
