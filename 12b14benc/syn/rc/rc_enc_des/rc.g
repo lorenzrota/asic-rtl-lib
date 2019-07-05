@@ -1,12 +1,12 @@
 ######################################################################
 
-# Created by Encounter(R) RTL Compiler RC14.28 - v14.20-s067_1 on Tue Jun 11 14:54:03 -0400 2019
+# Created by Encounter(R) RTL Compiler RC14.28 - v14.20-s067_1 on Wed Jul 03 13:58:49 -0700 2019
 
 # This file contains the RC script for /designs/ssp_enc12b14b_ext
 
 ######################################################################
 
-set_attribute -quiet runtime_by_stage { {global_incr_map 0 81 0 76}  {incr_opt 1 82 0 77} } /
+set_attribute -quiet runtime_by_stage { {global_incr_map 0 42 0 40}  {incr_opt 1 43 0 41} } /
 set_attribute -quiet print_error_info true /
 set_attribute -quiet gui_auto_update false /
 set_attribute -quiet use_area_from_lef true /
@@ -33,15 +33,15 @@ set_attribute -quiet dft_scan_style muxed_scan /
 set_attribute -quiet dft_scanbit_waveform_analysis false /
 # END DFT SECTION
 set_attribute -quiet hdl_user_name ssp_enc12b14b_ext /designs/ssp_enc12b14b_ext
-set_attribute -quiet hdl_filelist {{default -vhdl1993 {SYNTHESIS} {../../src/ssp12b14benc/StdRtlPkg.vhd ../../src/ssp12b14benc/Code12b14bPkg.vhd ../../src/ssp12b14benc/SspFramer.vhd ../../src/ssp12b14benc/Encoder12b14b.vhd ../../src/ssp12b14benc/SspEncoder12b14b.vhd ../../src/ssp12b14benc/ssp_enc12b14b_ext.vhd} {}}} /designs/ssp_enc12b14b_ext
-set_attribute -quiet seq_reason_deleted {{{U_SspEncoder12b14b/SspFramer_1/r[eof]} unloaded} {{U_SspEncoder12b14b/SspFramer_1/r[eofLast]} unloaded} {{U_SspEncoder12b14b/SspFramer_1/r[readyIn]} unloaded} {{U_SspEncoder12b14b/Encoder12b14b_1/r[readyIn]} unloaded} {{U_SspEncoder12b14b/SspFramer_1/r_reg[validOut]} unloaded} {{U_SspEncoder12b14b/Encoder12b14b_1/r_reg[validOut]} unloaded}} /designs/ssp_enc12b14b_ext
+set_attribute -quiet hdl_filelist {{default -vhdl1993 {SYNTHESIS} {../../src/ssp12b14benc/StdRtlPkg.vhd ../../src/ssp12b14benc/Code12b14bPkg.vhd ../../src/ssp12b14benc/SspFramer.vhd ../../src/ssp12b14benc/Encoder12b14b.vhd ../../src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd ../../src/ssp12b14benc/ssp_enc12b14b_ext.vhd} {}}} /designs/ssp_enc12b14b_ext
+set_attribute -quiet seq_reason_deleted {{{U_Cryo_SspEncoder12b14b/SspFramer_1/r[eof]} unloaded} {{U_Cryo_SspEncoder12b14b/SspFramer_1/r[eofLast]} unloaded} {{U_Cryo_SspEncoder12b14b/SspFramer_1/r[readyIn]} unloaded} {{U_Cryo_SspEncoder12b14b/Encoder12b14b_1/r[readyIn]} unloaded} {{U_Cryo_SspEncoder12b14b/SspFramer_1/r_reg[validOut]} unloaded} {{U_Cryo_SspEncoder12b14b/Encoder12b14b_1/r_reg[validOut]} unloaded}} /designs/ssp_enc12b14b_ext
 set_attribute -quiet rc_current_verification_directory fv/ssp_enc12b14b_ext /designs/ssp_enc12b14b_ext
 set_attribute -quiet arch_filename ../../src/ssp12b14benc/ssp_enc12b14b_ext.vhd /designs/ssp_enc12b14b_ext
 set_attribute -quiet entity_filename ../../src/ssp12b14benc/ssp_enc12b14b_ext.vhd /designs/ssp_enc12b14b_ext
-set_attribute -quiet hdl_user_name SspEncoder12b14b /designs/ssp_enc12b14b_ext/subdesigns/SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
-set_attribute -quiet hdl_filelist {{default -vhdl1993 {SYNTHESIS} {../../src/ssp12b14benc/StdRtlPkg.vhd ../../src/ssp12b14benc/Code12b14bPkg.vhd ../../src/ssp12b14benc/SspFramer.vhd ../../src/ssp12b14benc/Encoder12b14b.vhd ../../src/ssp12b14benc/SspEncoder12b14b.vhd} {}}} /designs/ssp_enc12b14b_ext/subdesigns/SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
-set_attribute -quiet arch_filename ../../src/ssp12b14benc/SspEncoder12b14b.vhd /designs/ssp_enc12b14b_ext/subdesigns/SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
-set_attribute -quiet entity_filename ../../src/ssp12b14benc/SspEncoder12b14b.vhd /designs/ssp_enc12b14b_ext/subdesigns/SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
+set_attribute -quiet hdl_user_name Cryo_SspEncoder12b14b /designs/ssp_enc12b14b_ext/subdesigns/Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
+set_attribute -quiet hdl_filelist {{default -vhdl1993 {SYNTHESIS} {../../src/ssp12b14benc/StdRtlPkg.vhd ../../src/ssp12b14benc/Code12b14bPkg.vhd ../../src/ssp12b14benc/SspFramer.vhd ../../src/ssp12b14benc/Encoder12b14b.vhd ../../src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd} {}}} /designs/ssp_enc12b14b_ext/subdesigns/Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
+set_attribute -quiet arch_filename ../../src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd /designs/ssp_enc12b14b_ext/subdesigns/Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
+set_attribute -quiet entity_filename ../../src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd /designs/ssp_enc12b14b_ext/subdesigns/Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
 set_attribute -quiet is_sop_cluster true /designs/ssp_enc12b14b_ext/subdesigns/Encoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_DEBUG_DISP_G0_FLOW_CTRL_EN_G0
 set_attribute -quiet hdl_user_name Encoder12b14b /designs/ssp_enc12b14b_ext/subdesigns/Encoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_DEBUG_DISP_G0_FLOW_CTRL_EN_G0
 set_attribute -quiet hdl_filelist {{default -vhdl1993 {SYNTHESIS} {../../src/ssp12b14benc/StdRtlPkg.vhd ../../src/ssp12b14benc/Code12b14bPkg.vhd ../../src/ssp12b14benc/Encoder12b14b.vhd} {}}} /designs/ssp_enc12b14b_ext/subdesigns/Encoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_DEBUG_DISP_G0_FLOW_CTRL_EN_G0

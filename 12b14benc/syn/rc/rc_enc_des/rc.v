@@ -781,7 +781,7 @@ module
 endmodule
 
 module
-     SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0(clk_i,
+     Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0(clk_i,
      rst_n_i, valid_i, data_i, data_o);
   input clk_i, rst_n_i, valid_i;
   input [11:0] data_i;
@@ -809,13 +809,13 @@ module
        .dataKOut (s_framek));
 endmodule
 
-module ssp_enc12b14b_ext(start_ro, clk_i, fclk_i, rst_n_i, valid_i,
-     mode_i, data_i, data_o);
-  input start_ro, clk_i, fclk_i, rst_n_i, valid_i;
+module ssp_enc12b14b_ext(start_ro, clk_i, rst_n_i, valid_i, mode_i,
+     data_i, data_o);
+  input start_ro, clk_i, rst_n_i, valid_i;
   input [2:0] mode_i;
   input [11:0] data_i;
   output [13:0] data_o;
-  wire start_ro, clk_i, fclk_i, rst_n_i, valid_i;
+  wire start_ro, clk_i, rst_n_i, valid_i;
   wire [2:0] mode_i;
   wire [11:0] data_i;
   wire [13:0] data_o;
@@ -837,9 +837,9 @@ module ssp_enc12b14b_ext(start_ro, clk_i, fclk_i, rst_n_i, valid_i,
   wire n_75, n_76, n_77, n_78, n_79, n_80, n_81, n_82;
   wire n_83, n_84, n_85, n_86, n_87, n_88, n_89, n_90;
   wire n_124, s_evenodd, s_valid_i, valid_i_latched;
-  SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
-       U_SspEncoder12b14b(.clk_i (clk_i), .rst_n_i (rst_n_i), .valid_i
-       (s_valid_i), .data_i (s_data_i), .data_o (s_data_o));
+  Cryo_SspEncoder12b14b_RST_POLARITY_G0_RST_ASYNC_G1_AUTO_FRAME_G1_FLOW_CTRL_EN_G0
+       U_Cryo_SspEncoder12b14b(.clk_i (clk_i), .rst_n_i (rst_n_i),
+       .valid_i (s_valid_i), .data_i (s_data_i), .data_o (s_data_o));
   DFCND1 \data_i_latched_reg[0] (.CDN (rst_n_i), .CP (clk_i), .D
        (data_i[0]), .Q (UNCONNECTED3), .QN (data_i_latched[0]));
   DFCND1 \data_i_latched_reg[10] (.CDN (rst_n_i), .CP (clk_i), .D
@@ -894,111 +894,111 @@ module ssp_enc12b14b_ext(start_ro, clk_i, fclk_i, rst_n_i, valid_i,
        (n_79), .Q (data_o[9]));
   DFCNQD1 valid_i_latched_reg(.CDN (rst_n_i), .CP (clk_i), .D
        (valid_i), .Q (valid_i_latched));
-  CKND2D1 g1397(.A1 (n_76), .A2 (n_68), .ZN (n_90));
-  CKND2D1 g1398(.A1 (n_75), .A2 (n_68), .ZN (n_89));
-  CKND2D1 g1399(.A1 (n_74), .A2 (n_68), .ZN (n_88));
-  CKND2D1 g1400(.A1 (n_71), .A2 (n_68), .ZN (n_87));
-  CKND2D1 g1401(.A1 (n_73), .A2 (n_70), .ZN (n_86));
-  CKND2D1 g1402(.A1 (n_72), .A2 (n_70), .ZN (n_85));
-  OAI211D1 g1403(.A1 (n_50), .A2 (data_i_latched[0]), .B (n_70), .C
+  CKND2D1 g1398(.A1 (n_76), .A2 (n_68), .ZN (n_90));
+  CKND2D1 g1399(.A1 (n_75), .A2 (n_68), .ZN (n_89));
+  CKND2D1 g1400(.A1 (n_74), .A2 (n_68), .ZN (n_88));
+  CKND2D1 g1401(.A1 (n_71), .A2 (n_68), .ZN (n_87));
+  CKND2D1 g1402(.A1 (n_73), .A2 (n_70), .ZN (n_86));
+  CKND2D1 g1403(.A1 (n_72), .A2 (n_70), .ZN (n_85));
+  OAI211D1 g1404(.A1 (n_50), .A2 (data_i_latched[0]), .B (n_70), .C
        (n_66), .ZN (n_84));
-  OAI211D1 g1404(.A1 (n_50), .A2 (data_i_latched[10]), .B (n_70), .C
+  OAI211D1 g1405(.A1 (n_50), .A2 (data_i_latched[10]), .B (n_70), .C
        (n_65), .ZN (n_83));
-  OAI211D1 g1405(.A1 (n_50), .A2 (data_i_latched[2]), .B (n_70), .C
+  OAI211D1 g1406(.A1 (n_50), .A2 (data_i_latched[2]), .B (n_70), .C
        (n_64), .ZN (n_82));
-  OAI211D1 g1406(.A1 (n_50), .A2 (data_i_latched[5]), .B (n_63), .C
+  OAI211D1 g1407(.A1 (n_50), .A2 (data_i_latched[5]), .B (n_63), .C
        (n_68), .ZN (n_81));
-  OAI211D1 g1407(.A1 (n_50), .A2 (data_i_latched[8]), .B (n_70), .C
+  OAI211D1 g1408(.A1 (n_50), .A2 (data_i_latched[8]), .B (n_70), .C
        (n_62), .ZN (n_80));
-  OAI211D1 g1408(.A1 (n_50), .A2 (data_i_latched[9]), .B (n_61), .C
+  OAI211D1 g1409(.A1 (n_50), .A2 (data_i_latched[9]), .B (n_61), .C
        (n_68), .ZN (n_79));
-  AO221D0 g1409(.A1 (s_cnt_ramp[13]), .A2 (n_47), .B1 (s_data_o[13]),
+  AO221D0 g1410(.A1 (s_cnt_ramp[13]), .A2 (n_47), .B1 (s_data_o[13]),
        .B2 (n_0), .C (n_67), .Z (n_78));
-  AO221D0 g1410(.A1 (s_cnt_ramp[12]), .A2 (n_47), .B1 (s_data_o[12]),
+  AO221D0 g1411(.A1 (s_cnt_ramp[12]), .A2 (n_47), .B1 (s_data_o[12]),
        .B2 (n_0), .C (n_69), .Z (n_77));
-  AOI222D0 g1411(.A1 (data_i_latched[11]), .A2 (n_49), .B1
+  AOI222D0 g1412(.A1 (data_i_latched[11]), .A2 (n_49), .B1
        (s_data_o[11]), .B2 (n_0), .C1 (s_cnt_ramp[11]), .C2 (n_47), .ZN
        (n_76));
-  AOI222D0 g1412(.A1 (data_i_latched[1]), .A2 (n_49), .B1
+  AOI222D0 g1413(.A1 (data_i_latched[1]), .A2 (n_49), .B1
        (s_data_o[1]), .B2 (n_0), .C1 (s_cnt_ramp[1]), .C2 (n_47), .ZN
        (n_75));
-  AOI222D0 g1413(.A1 (data_i_latched[3]), .A2 (n_49), .B1
+  AOI222D0 g1414(.A1 (data_i_latched[3]), .A2 (n_49), .B1
        (s_data_o[3]), .B2 (n_0), .C1 (s_cnt_ramp[3]), .C2 (n_47), .ZN
        (n_74));
-  AOI222D0 g1414(.A1 (data_i_latched[4]), .A2 (n_49), .B1
+  AOI222D0 g1415(.A1 (data_i_latched[4]), .A2 (n_49), .B1
        (s_data_o[4]), .B2 (n_0), .C1 (s_cnt_ramp[4]), .C2 (n_47), .ZN
        (n_73));
-  AOI222D0 g1415(.A1 (data_i_latched[6]), .A2 (n_49), .B1
+  AOI222D0 g1416(.A1 (data_i_latched[6]), .A2 (n_49), .B1
        (s_data_o[6]), .B2 (n_0), .C1 (s_cnt_ramp[6]), .C2 (n_47), .ZN
        (n_72));
-  AOI222D0 g1416(.A1 (data_i_latched[7]), .A2 (n_49), .B1
+  AOI222D0 g1417(.A1 (data_i_latched[7]), .A2 (n_49), .B1
        (s_data_o[7]), .B2 (n_0), .C1 (s_cnt_ramp[7]), .C2 (n_47), .ZN
        (n_71));
-  INVD1 g1417(.I (n_70), .ZN (n_69));
-  INVD1 g1418(.I (n_68), .ZN (n_67));
-  CKND2D1 g1419(.A1 (n_58), .A2 (mode_i[2]), .ZN (n_70));
-  CKND2D1 g1420(.A1 (n_60), .A2 (mode_i[2]), .ZN (n_68));
-  AO221D0 g1421(.A1 (data_i_latched[4]), .A2 (n_45), .B1
+  INVD1 g1418(.I (n_70), .ZN (n_69));
+  INVD1 g1419(.I (n_68), .ZN (n_67));
+  CKND2D1 g1420(.A1 (n_58), .A2 (mode_i[2]), .ZN (n_70));
+  CKND2D1 g1421(.A1 (n_60), .A2 (mode_i[2]), .ZN (n_68));
+  AO221D0 g1422(.A1 (data_i_latched[4]), .A2 (n_45), .B1
        (s_cnt_ramp[4]), .B2 (n_46), .C (n_58), .Z (s_data_i[4]));
-  CKND2D1 g1422(.A1 (n_57), .A2 (n_53), .ZN (s_data_i[2]));
-  CKND2D1 g1423(.A1 (n_57), .A2 (n_51), .ZN (s_data_i[8]));
-  CKND2D1 g1424(.A1 (n_57), .A2 (n_52), .ZN (s_data_i[0]));
-  AO221D0 g1425(.A1 (data_i_latched[6]), .A2 (n_45), .B1
+  CKND2D1 g1423(.A1 (n_57), .A2 (n_53), .ZN (s_data_i[2]));
+  CKND2D1 g1424(.A1 (n_57), .A2 (n_51), .ZN (s_data_i[8]));
+  CKND2D1 g1425(.A1 (n_57), .A2 (n_52), .ZN (s_data_i[0]));
+  AO221D0 g1426(.A1 (data_i_latched[6]), .A2 (n_45), .B1
        (s_cnt_ramp[6]), .B2 (n_46), .C (n_58), .Z (s_data_i[6]));
-  CKND2D1 g1426(.A1 (n_57), .A2 (n_55), .ZN (s_data_i[10]));
-  AO221D0 g1427(.A1 (data_i_latched[3]), .A2 (n_45), .B1
+  CKND2D1 g1427(.A1 (n_57), .A2 (n_55), .ZN (s_data_i[10]));
+  AO221D0 g1428(.A1 (data_i_latched[3]), .A2 (n_45), .B1
        (s_cnt_ramp[3]), .B2 (n_46), .C (n_60), .Z (s_data_i[3]));
-  CKND2D1 g1428(.A1 (n_59), .A2 (n_54), .ZN (s_data_i[9]));
-  AO221D0 g1429(.A1 (data_i_latched[1]), .A2 (n_45), .B1
+  CKND2D1 g1429(.A1 (n_59), .A2 (n_54), .ZN (s_data_i[9]));
+  AO221D0 g1430(.A1 (data_i_latched[1]), .A2 (n_45), .B1
        (s_cnt_ramp[1]), .B2 (n_46), .C (n_60), .Z (s_data_i[1]));
-  AO221D0 g1430(.A1 (data_i_latched[7]), .A2 (n_45), .B1
+  AO221D0 g1431(.A1 (data_i_latched[7]), .A2 (n_45), .B1
        (s_cnt_ramp[7]), .B2 (n_46), .C (n_60), .Z (s_data_i[7]));
-  AO221D0 g1431(.A1 (data_i_latched[11]), .A2 (n_45), .B1
+  AO221D0 g1432(.A1 (data_i_latched[11]), .A2 (n_45), .B1
        (s_cnt_ramp[11]), .B2 (n_46), .C (n_60), .Z (s_data_i[11]));
-  CKND2D1 g1432(.A1 (n_59), .A2 (n_56), .ZN (s_data_i[5]));
-  AOI22D0 g1433(.A1 (n_47), .A2 (s_cnt_ramp[0]), .B1 (n_0), .B2
+  CKND2D1 g1433(.A1 (n_59), .A2 (n_56), .ZN (s_data_i[5]));
+  AOI22D0 g1434(.A1 (n_47), .A2 (s_cnt_ramp[0]), .B1 (n_0), .B2
        (s_data_o[0]), .ZN (n_66));
-  AOI22D0 g1434(.A1 (n_47), .A2 (s_cnt_ramp[10]), .B1 (n_0), .B2
+  AOI22D0 g1435(.A1 (n_47), .A2 (s_cnt_ramp[10]), .B1 (n_0), .B2
        (s_data_o[10]), .ZN (n_65));
-  AOI22D0 g1435(.A1 (n_47), .A2 (s_cnt_ramp[2]), .B1 (n_0), .B2
+  AOI22D0 g1436(.A1 (n_47), .A2 (s_cnt_ramp[2]), .B1 (n_0), .B2
        (s_data_o[2]), .ZN (n_64));
-  AOI22D0 g1436(.A1 (n_47), .A2 (s_cnt_ramp[5]), .B1 (n_0), .B2
+  AOI22D0 g1437(.A1 (n_47), .A2 (s_cnt_ramp[5]), .B1 (n_0), .B2
        (s_data_o[5]), .ZN (n_63));
-  AOI22D0 g1437(.A1 (n_47), .A2 (s_cnt_ramp[8]), .B1 (n_0), .B2
+  AOI22D0 g1438(.A1 (n_47), .A2 (s_cnt_ramp[8]), .B1 (n_0), .B2
        (s_data_o[8]), .ZN (n_62));
-  AOI22D0 g1438(.A1 (n_47), .A2 (s_cnt_ramp[9]), .B1 (n_0), .B2
+  AOI22D0 g1439(.A1 (n_47), .A2 (s_cnt_ramp[9]), .B1 (n_0), .B2
        (s_data_o[9]), .ZN (n_61));
-  MUX2D1 g1439(.I0 (start_ro), .I1 (valid_i_latched), .S (n_48), .Z
+  MUX2D1 g1440(.I0 (start_ro), .I1 (valid_i_latched), .S (n_48), .Z
        (s_valid_i));
-  INVD1 g1440(.I (n_60), .ZN (n_59));
-  CKMUX2D1 g1441(.I0 (n_43), .I1 (n_42), .S (mode_i[0]), .Z (n_60));
-  INVD1 g1442(.I (n_58), .ZN (n_57));
-  NR3D0 g1443(.A1 (n_124), .A2 (n_46), .A3 (n_45), .ZN (n_58));
-  MAOI22D0 g1444(.A1 (s_cnt_ramp[5]), .A2 (n_46), .B1
+  INVD1 g1441(.I (n_60), .ZN (n_59));
+  CKMUX2D1 g1442(.I0 (n_43), .I1 (n_42), .S (mode_i[0]), .Z (n_60));
+  INVD1 g1443(.I (n_58), .ZN (n_57));
+  NR3D0 g1444(.A1 (n_124), .A2 (n_46), .A3 (n_45), .ZN (n_58));
+  MAOI22D0 g1445(.A1 (s_cnt_ramp[5]), .A2 (n_46), .B1
        (data_i_latched[5]), .B2 (n_44), .ZN (n_56));
-  MAOI22D0 g1445(.A1 (s_cnt_ramp[10]), .A2 (n_46), .B1
+  MAOI22D0 g1446(.A1 (s_cnt_ramp[10]), .A2 (n_46), .B1
        (data_i_latched[10]), .B2 (n_44), .ZN (n_55));
-  MAOI22D0 g1446(.A1 (s_cnt_ramp[9]), .A2 (n_46), .B1
+  MAOI22D0 g1447(.A1 (s_cnt_ramp[9]), .A2 (n_46), .B1
        (data_i_latched[9]), .B2 (n_44), .ZN (n_54));
-  MAOI22D0 g1447(.A1 (s_cnt_ramp[2]), .A2 (n_46), .B1
+  MAOI22D0 g1448(.A1 (s_cnt_ramp[2]), .A2 (n_46), .B1
        (data_i_latched[2]), .B2 (n_44), .ZN (n_53));
-  MAOI22D0 g1448(.A1 (s_cnt_ramp[0]), .A2 (n_46), .B1
+  MAOI22D0 g1449(.A1 (s_cnt_ramp[0]), .A2 (n_46), .B1
        (data_i_latched[0]), .B2 (n_44), .ZN (n_52));
-  MAOI22D0 g1449(.A1 (s_cnt_ramp[8]), .A2 (n_46), .B1
+  MAOI22D0 g1450(.A1 (s_cnt_ramp[8]), .A2 (n_46), .B1
        (data_i_latched[8]), .B2 (n_44), .ZN (n_51));
-  INVD1 g1450(.I (n_50), .ZN (n_49));
-  CKND2D1 g1451(.A1 (n_45), .A2 (mode_i[2]), .ZN (n_50));
-  NR2D0 g1452(.A1 (n_44), .A2 (mode_i[2]), .ZN (n_48));
-  CKAN2D1 g1453(.A1 (n_46), .A2 (mode_i[2]), .Z (n_47));
-  INVD1 g1462(.I (n_45), .ZN (n_44));
-  AN2XD1 g1468(.A1 (s_evenodd), .A2 (mode_i[1]), .Z (n_43));
-  NR2XD0 g1469(.A1 (s_evenodd), .A2 (mode_i[1]), .ZN (n_42));
-  CKAN2D1 g1470(.A1 (mode_i[1]), .A2 (mode_i[0]), .Z (n_46));
-  NR2XD1 g1471(.A1 (mode_i[1]), .A2 (mode_i[0]), .ZN (n_45));
-  INVD1 g1472(.I (mode_i[2]), .ZN (n_0));
+  INVD1 g1451(.I (n_50), .ZN (n_49));
+  CKND2D1 g1452(.A1 (n_45), .A2 (mode_i[2]), .ZN (n_50));
+  NR2D0 g1453(.A1 (n_44), .A2 (mode_i[2]), .ZN (n_48));
+  CKAN2D1 g1454(.A1 (n_46), .A2 (mode_i[2]), .Z (n_47));
+  INVD1 g1463(.I (n_45), .ZN (n_44));
+  AN2XD1 g1469(.A1 (s_evenodd), .A2 (mode_i[1]), .Z (n_43));
+  NR2XD0 g1470(.A1 (s_evenodd), .A2 (mode_i[1]), .ZN (n_42));
+  CKAN2D1 g1471(.A1 (mode_i[1]), .A2 (mode_i[0]), .Z (n_46));
+  NR2XD1 g1472(.A1 (mode_i[1]), .A2 (mode_i[0]), .ZN (n_45));
+  INVD1 g1473(.I (mode_i[2]), .ZN (n_0));
   DFCNQD1 \s_cnt_ramp_reg[13] (.CDN (rst_n_i), .CP (clk_i), .D (n_40),
        .Q (s_cnt_ramp[13]));
-  NR2XD0 g606(.A1 (n_39), .A2 (n_25), .ZN (n_40));
+  NR2XD0 g605(.A1 (n_39), .A2 (n_25), .ZN (n_40));
   DFCNQD1 \s_cnt_ramp_reg[11] (.CDN (rst_n_i), .CP (clk_i), .D (n_34),
        .Q (s_cnt_ramp[11]));
   DFCNQD1 \s_cnt_ramp_reg[2] (.CDN (rst_n_i), .CP (clk_i), .D (n_26),
@@ -1025,34 +1025,34 @@ module ssp_enc12b14b_ext(start_ro, clk_i, fclk_i, rst_n_i, valid_i,
        .Q (s_cnt_ramp[1]));
   DFCNQD1 \s_cnt_ramp_reg[0] (.CDN (rst_n_i), .CP (clk_i), .D (n_31),
        .Q (s_cnt_ramp[0]));
-  XNR2D1 g620(.A1 (n_23), .A2 (s_cnt_ramp[13]), .ZN (n_39));
-  INR2XD0 g621(.A1 (n_20), .B1 (n_25), .ZN (n_38));
-  INR2XD0 g622(.A1 (n_6), .B1 (n_25), .ZN (n_37));
-  INR2XD0 g623(.A1 (n_8), .B1 (n_25), .ZN (n_36));
-  INR2XD0 g624(.A1 (n_10), .B1 (n_25), .ZN (n_35));
-  INR2XD0 g625(.A1 (n_21), .B1 (n_25), .ZN (n_34));
-  INR2XD0 g626(.A1 (n_12), .B1 (n_25), .ZN (n_33));
-  INR2XD0 g627(.A1 (n_14), .B1 (n_25), .ZN (n_32));
-  NR2XD0 g628(.A1 (s_cnt_ramp[0]), .A2 (n_25), .ZN (n_31));
-  INR2XD0 g629(.A1 (n_24), .B1 (n_25), .ZN (n_30));
-  INR2XD0 g630(.A1 (n_18), .B1 (n_25), .ZN (n_29));
-  INR2XD0 g631(.A1 (n_2), .B1 (n_25), .ZN (n_28));
-  INR2XD0 g632(.A1 (n_16), .B1 (n_25), .ZN (n_27));
-  INR2XD0 g633(.A1 (n_4), .B1 (n_25), .ZN (n_26));
-  OA31D2 g634(.A1 (s_cnt_ramp[13]), .A2 (s_cnt_ramp[12]), .A3 (n_22),
+  XNR2D1 g619(.A1 (n_23), .A2 (s_cnt_ramp[13]), .ZN (n_39));
+  INR2XD0 g620(.A1 (n_20), .B1 (n_25), .ZN (n_38));
+  INR2XD0 g621(.A1 (n_6), .B1 (n_25), .ZN (n_37));
+  INR2XD0 g622(.A1 (n_8), .B1 (n_25), .ZN (n_36));
+  INR2XD0 g623(.A1 (n_10), .B1 (n_25), .ZN (n_35));
+  INR2XD0 g624(.A1 (n_21), .B1 (n_25), .ZN (n_34));
+  INR2XD0 g625(.A1 (n_12), .B1 (n_25), .ZN (n_33));
+  INR2XD0 g626(.A1 (n_14), .B1 (n_25), .ZN (n_32));
+  NR2XD0 g627(.A1 (s_cnt_ramp[0]), .A2 (n_25), .ZN (n_31));
+  INR2XD0 g628(.A1 (n_24), .B1 (n_25), .ZN (n_30));
+  INR2XD0 g629(.A1 (n_18), .B1 (n_25), .ZN (n_29));
+  INR2XD0 g630(.A1 (n_2), .B1 (n_25), .ZN (n_28));
+  INR2XD0 g631(.A1 (n_16), .B1 (n_25), .ZN (n_27));
+  INR2XD0 g632(.A1 (n_4), .B1 (n_25), .ZN (n_26));
+  OA31D2 g633(.A1 (s_cnt_ramp[13]), .A2 (s_cnt_ramp[12]), .A3 (n_22),
        .B (n_0), .Z (n_25));
-  CMPE22D1 g635(.A (s_cnt_ramp[12]), .B (n_22), .CO (n_23), .S (n_24));
-  CMPE22D1 g636(.A (s_cnt_ramp[11]), .B (n_19), .CO (n_22), .S (n_21));
-  CMPE22D1 g637(.A (s_cnt_ramp[10]), .B (n_17), .CO (n_19), .S (n_20));
-  CMPE22D1 g638(.A (s_cnt_ramp[9]), .B (n_15), .CO (n_17), .S (n_18));
-  CMPE22D1 g639(.A (s_cnt_ramp[8]), .B (n_13), .CO (n_15), .S (n_16));
-  CMPE22D1 g640(.A (s_cnt_ramp[7]), .B (n_11), .CO (n_13), .S (n_14));
-  CMPE22D1 g641(.A (s_cnt_ramp[6]), .B (n_9), .CO (n_11), .S (n_12));
-  CMPE22D1 g642(.A (s_cnt_ramp[5]), .B (n_7), .CO (n_9), .S (n_10));
-  CMPE22D1 g643(.A (s_cnt_ramp[4]), .B (n_5), .CO (n_7), .S (n_8));
-  CMPE22D1 g644(.A (s_cnt_ramp[3]), .B (n_3), .CO (n_5), .S (n_6));
-  CMPE22D1 g645(.A (s_cnt_ramp[2]), .B (n_1), .CO (n_3), .S (n_4));
-  CMPE22D1 g646(.A (s_cnt_ramp[1]), .B (s_cnt_ramp[0]), .CO (n_1), .S
+  CMPE22D1 g634(.A (s_cnt_ramp[12]), .B (n_22), .CO (n_23), .S (n_24));
+  CMPE22D1 g635(.A (s_cnt_ramp[11]), .B (n_19), .CO (n_22), .S (n_21));
+  CMPE22D1 g636(.A (s_cnt_ramp[10]), .B (n_17), .CO (n_19), .S (n_20));
+  CMPE22D1 g637(.A (s_cnt_ramp[9]), .B (n_15), .CO (n_17), .S (n_18));
+  CMPE22D1 g638(.A (s_cnt_ramp[8]), .B (n_13), .CO (n_15), .S (n_16));
+  CMPE22D1 g639(.A (s_cnt_ramp[7]), .B (n_11), .CO (n_13), .S (n_14));
+  CMPE22D1 g640(.A (s_cnt_ramp[6]), .B (n_9), .CO (n_11), .S (n_12));
+  CMPE22D1 g641(.A (s_cnt_ramp[5]), .B (n_7), .CO (n_9), .S (n_10));
+  CMPE22D1 g642(.A (s_cnt_ramp[4]), .B (n_5), .CO (n_7), .S (n_8));
+  CMPE22D1 g643(.A (s_cnt_ramp[3]), .B (n_3), .CO (n_5), .S (n_6));
+  CMPE22D1 g644(.A (s_cnt_ramp[2]), .B (n_1), .CO (n_3), .S (n_4));
+  CMPE22D1 g645(.A (s_cnt_ramp[1]), .B (s_cnt_ramp[0]), .CO (n_1), .S
        (n_2));
   DFCND1 s_evenodd_reg(.CDN (rst_n_i), .CP (clk_i), .D (n_124), .Q
        (s_evenodd), .QN (n_124));

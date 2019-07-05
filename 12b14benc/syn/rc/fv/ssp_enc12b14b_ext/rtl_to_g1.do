@@ -36,7 +36,7 @@ read design -rangeconstraint -configuration  -enumconstraint -golden -lastmod -n
 		../../src/ssp12b14benc/Code12b14bPkg.vhd \
 		../../src/ssp12b14benc/SspFramer.vhd \
 		../../src/ssp12b14benc/Encoder12b14b.vhd \
-		../../src/ssp12b14benc/SspEncoder12b14b.vhd \
+		../../src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd \
 		../../src/ssp12b14benc/ssp_enc12b14b_ext.vhd
 
 elaborate design -golden -root ssp_enc12b14b_ext -rootonly
