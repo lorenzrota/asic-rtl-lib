@@ -6,4 +6,5 @@ if { [SubmoduleCheck {ruckus} {1.7.2} ] < 0 } {exit -1}
 
 # Load source files
 loadSource -sim_only -path "$::DIR_PATH/src/ssp12b14benc/ssp_enc12b14b_ext.vhd"
+loadSource -sim_only -path "$::DIR_PATH/src/ssp12b14benc/Cryo_SspEncoder12b14b.vhd"
 
